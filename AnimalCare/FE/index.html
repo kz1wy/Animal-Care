@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetDesk</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- MAIN -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-expand-lg mx-4 fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="https://petdesk.com/wp-content/uploads/2020/08/PetDesk-White-Primary-Logo.png" class="me-2"
+                    height="60" alt="MDB Logo" loading="lazy" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item px-2">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#">Pages</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#">Blog</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item dropdown px-2">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown link
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <div class="header_button">
+                            <button class="button-in-web">GET A QUOTE</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <section class="intro">
+        <div class="background-overlay"></div>
+        <div class="intro__banner row mx-auto">
+            <div class="content col-12 col-lg-6">
+                <div class="text">
+                    <h1>Where Vets Guide Clients to Better Care</h1>
+                    <p>Veterinary clinics use PetDesk's client engagement platform to retain clients, assist staff, and expand business – so they can focus on providing the best care for pets.</p>
+                </div>
+            </div>
+            <div class="intro__picture col-12 col-lg-6">
+                <img src="https://petdesk.com/wp-content/uploads/2022/06/Assist-Staff-Hero-Image-B.jpg" alt="pic3_1">
+            </div>
+        </div>
+    </section>
+    <section class="services">
+        <div class="content text-black">
+            <h1>Reach Your Practice’s Full Potential</h1>
+        </div>
+        <div class="services__offer">
+            <div class="services__item">
+                <div class="services__text">
+                    <img src="https://petdesk.com/wp-content/uploads/2022/03/PetDesk-reach-potential-with-Illustration.png.webp" alt="">
+                    <h5>Enhance Patient Connection</h5>
+                    <p>Build strong pet parent relationships to keep your furry, fuzzy, and scaly patients coming back to their favorite clinic.</p>
+                </div>
+            </div>
+            <div class="services__item">
+                <div class="services__text">
+                    <img src="https://petdesk.com/wp-content/uploads/2021/12/PetDesk-streamline-communications-2.png.webp" alt="">
+                    <h5>Streamline Communication</h5>
+                    <p>Match your quality communication to your quality care and develop lasting connections.</p>
+                </div>
+            </div>
+            <div class="services__item">
+                <div class="services__text">
+                    <img src="https://petdesk.com/wp-content/uploads/2022/02/Homepage-moretimebettercare-B.png.webp" alt="">
+                    <h5>More Time, Better Care</h5>
+                    <p>Spend less time on the phone and more time tending to pressing tasks and your team’s self-care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- back to top -->
+    <a href="#" class="backToTop cd-top text-replace js-cd-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+
+    
+    <!-- BACKTOTOP -->
+    <script src="./js/util.js"></script>
+    <script src="./js/backToTop.js"></script>
+</body>
+
+</html>

@@ -4,18 +4,58 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+html,body{
+    font-family: 'Roboto', sans-serif;
+    margin: auto;
+    color: #fff;
+}
 ul {
     list-style: none;
 }
-
-ul li {
-    display: inline;
-    margin: 0 0.6rem;
+a{
+    text-decoration: none;
 }
 
-a {
+.button-in-web{
+    cursor: pointer;
+    padding: 1rem 1.8rem;
+    font-size: .7rem;
+    border: 0;
+    border-radius: 3rem;
+    transition: 0.5s;
+    background-image: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1), rgba(132, 250, 176, 1));
+    /* giúp tăng kích thước màu nền */
+    background-size: 200%;
+    box-shadow: 0 0 1.2rem #eee;
+    font-weight: 700;
+    color: white;
+}
+.button-in-web:hover{
+    background-position: right center;
+    color: #fff;
     text-decoration: none;
+}
+.list{
+    position: relative;
+    padding-left: 3rem;
+    line-height: 3rem;
+}
+.list li::before{
+    content: "\f00c";
+    font-family: 'Line Awesome Free';
+    font-size: 1.5rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    text-align: center;
+    line-height: 2.4rem;
+    color: #fff;
+    border-radius: 2rem;
+    font-weight: bold;
+    background-image: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+    background-size: 200%;
+
+    position: absolute;
+    left: 0;
 }
 
 /* sign up */
@@ -33,7 +73,7 @@ a {
     background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
 }
 
 .gradient-custom-4 {
@@ -44,7 +84,141 @@ a {
     background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+}
+.form-signup{
+    width: 1550px;
+}
+.form-login{
+    width: 950px;
 }
 
-/* sign in */
+
+/* CAROUSEL */
+.background-overlay{
+    position: absolute;
+    top: 0;
+    background-image: url(https://petdesk.com/wp-content/uploads/2021/11/nb-pd-texture-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+/* INTRO */
+.intro{
+    overflow-x: visible;
+    position: relative;
+    background-image: linear-gradient(130deg, rgba(143, 211, 244, 1) 0%, rgba(143, 211, 244, 1) 12%, rgba(132, 250, 176, 1) 29%, rgba(136, 212, 229, 0.6) 73%);
+    height: 100%;
+    padding: 7rem 0;
+}
+.content{
+    padding: 4rem 2rem 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content h3{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.content p:first-of-type{
+    padding-right: 7rem;
+    font-size: 1.4rem;
+    line-height: 2rem;
+}
+.content h1{
+    font-size: 3rem;
+    line-height: 1.1;
+    font-weight:900;
+}
+.content button{
+    margin: 1rem 0;
+    font-size: .8rem;
+}
+.intro__picture img{
+    display: block;
+    border-radius: 100%;
+    width: 700px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* SERVICES */
+.services .content{
+    text-align: center;
+    max-width: 100%;
+}
+.services__offer{
+    width: 70%;
+    margin: auto;
+    padding-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+}
+.services__item{
+    background-color: white;
+    transform:translateY(1rem);
+    transition: all .7s;
+}
+.services__item:hover{
+    transform: translateY(0);
+}
+.services__item img{
+    width: 100%;
+}
+.services__text{
+    margin: 1.2rem;
+    text-align: center;
+    line-height: 1.3rem;
+    color: gray;
+}
+.services__text p{
+    font-size: .8rem;
+}
+.services__text h4{
+    font-weight: 700;
+}
+
+/* BACKTOTOP */
+.backToTop{
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: .3rem;
+    text-align: center;
+    line-height: 2.5rem;
+    background-color: #f55f8d;
+    color:white;
+    font-size: .8rem;
+    position: fixed;
+    right: .8rem;
+    bottom: .8rem;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.cd-top--is-visible {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+/* KEYFRAME */
+@keyframes move2 { 
+    0% { transform: rotate(1deg) translate(2px, 2px); }
+    50% { transform: rotate(-1deg) translate(-2px, -2px); }
+    100% { transform: rotate(1deg) translate(2px, 2px); }
+  }
+  @keyframes fixedAnim {
+    0% {
+        right: 125%;
+    }
+    125% {
+        right: 0;
+    }
+}
