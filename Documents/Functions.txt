@@ -1,0 +1,51 @@
+1. User Management
+Register new users
+Login/logout
+Edit user profile
+Delete user account
+View list of users with their roles
+
+2. Animal Management
+Add new animal
+Edit animal details
+Delete animal
+View list of all animals with their details
+Filter animals by species, etc.
+
+3. Enclosure Management
+Add new enclosure
+Edit enclosure details
+Delete enclosure
+View list of all enclosures with their details
+Filter enclosures by location, status, etc.
+
+4. Feeding Schedule Management
+Create new feeding schedule
+Edit feeding schedule
+Delete feeding schedule
+View list of all feeding schedules with details
+Filter feeding schedules by animal, enclosure, feeding time, etc.
+
+5. Medical Record Management
+Add new medical record for an animal
+Edit medical record
+Delete medical record
+View list of all medical records for an animal
+Filter medical records by animal, veterinarian, date of visit, diagnosis, prescription, etc.
+
+6. Breeding Program Management
+Add new breeding program
+Edit breeding program
+Delete breeding program
+View list of all breeding programs with details
+Filter breeding programs by species, start date, end date, etc.
+
+7. Breeding Pair Management
+Add new breeding pair
+Edit breeding pair
+Delete breeding pair
+View list of all breeding pairs with details
+Filter breeding pairs by breeding program, male animal, female animal, etc.
+
+8. Login Log Management (admin only)
+View login log of all users
