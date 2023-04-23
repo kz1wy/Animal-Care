@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS healthTracker;
-CREATE DATABASE healthTracker;
+DROP DATABASE IF EXISTS health_tracker;
+CREATE DATABASE health_tracker;
 
-USE healthTracker;
+USE health_tracker;
 
 -- Create tables
 CREATE TABLE users (
@@ -9,7 +9,7 @@ CREATE TABLE users (
   username VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
-  role ENUM('admin', 'veterinarian', 'zookeeper') NOT NULL,
+  role ENUM('ADMIN', 'VETERINARIAN', 'ZOOKEEPER') NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -107,9 +107,9 @@ CREATE TABLE login_logs (
 
 -- Insert data into users table
 INSERT INTO users (username, password, email, role) VALUES
-('admin', 'password', 'admin@adzoo.com', 'admin'),
-('hue', 'password', 'zkp@zoo.com', 'zookeeper'),
-('quang', 'password', 'vet@zoo.com', 'veterinarian');
+('admin', '$2a$12$yYqhTllEOAeQKCqqYEyAyu0ymRUcfELuD/45vPrk7zjYGjbBwsVGm', 'admin@adzoo.com', 'ADMIN'),
+('hue', '$2a$12$yYqhTllEOAeQKCqqYEyAyu0ymRUcfELuD/45vPrk7zjYGjbBwsVGm', 'zkp@zoo.com', 'ZOOKEEPER'),
+('quang', '$2a$12$yYqhTllEOAeQKCqqYEyAyu0ymRUcfELuD/45vPrk7zjYGjbBwsVGm', 'vet@zoo.com', 'VETERINARIAN');
 
 INSERT INTO login_logs (user_id, login_time) VALUES
 (1, '2022-03-01 09:00:00'),
@@ -161,3 +161,5 @@ VALUES
 	(3, 3, '2022-01-15', 'Skin rash', 'Antihistamines and topical ointment', 'Animal appears to be allergic to a certain type of plant in the enclosure.'),
 	(4, 2, '2022-04-01', 'Influenza', 'Antivirals and rest', 'Animal is currently under observation and will need to be monitored closely.');
 
+alter table feeding_schedules add column enclosure_id integer
+alter table feeding_schedules add constraint FKtf3sy2y3q5xggncckd47wk1qy foreign key (enclosure_id) references enclosures (id)
