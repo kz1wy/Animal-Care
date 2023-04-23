@@ -18,8 +18,8 @@ a{
 
 .button-in-web{
     cursor: pointer;
-    padding: 1rem 1.8rem;
-    font-size: .7rem;
+    padding: .8rem 1.8rem;
+    font-size: .8rem;
     border: 0;
     border-radius: 3rem;
     transition: 0.5s;
@@ -57,7 +57,9 @@ a{
     position: absolute;
     left: 0;
 }
-
+.nav {
+    font-weight: 600;
+}
 /* sign up */
 .mask{
     color:gray;
@@ -183,7 +185,17 @@ a{
 .services__text h4{
     font-weight: 700;
 }
-
+/* FOOTER */
+footer {
+    background-image: linear-gradient(130deg, rgba(143, 211, 244, 1) 0%, rgba(143, 211, 244, 1) 12%, rgba(132, 250, 176, 1) 29%, rgba(136, 212, 229, 0.6) 73%);
+}
+footer .connect {
+    font-weight: 600;
+    font-size: 18px;
+}
+footer .icon{
+    font-size: 24px;
+}
 /* BACKTOTOP */
 .backToTop{
     display: block;
@@ -192,7 +204,7 @@ a{
     border-radius: .3rem;
     text-align: center;
     line-height: 2.5rem;
-    background-color: #f55f8d;
+    background-color: rgba(143, 211, 244, 1);
     color:white;
     font-size: .8rem;
     position: fixed;
