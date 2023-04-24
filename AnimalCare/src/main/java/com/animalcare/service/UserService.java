@@ -49,7 +49,7 @@ public class UserService {
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             user.setUsername(updatedUser.getUsername());
-            user.setPassword(updatedUser.getPassword());
+            user.setPassword(new BCryptPasswordEncoder().encode(updatedUser.getPassword()));
             user.setEmail(updatedUser.getEmail());
             user.setRole(updatedUser.getRole());
             return userRepository.save(user);
@@ -57,6 +57,24 @@ public class UserService {
             throw new EntityNotFoundException("User with id " + id + " not found.");
         }
     }
+
+//    private final List<User> APPLICATION_USERS = Arrays.asList(
+//            new User("duy", new BCryptPasswordEncoder().encode("123"), "admin@gmail.com", User.Role.ADMIN)
+//    );
+
+//    public UserDetails findUserByEmail(String email) {
+//        User user = APPLICATION_USERS.stream()
+//                .filter(u -> u.getEmail().equals(email))
+//                .findFirst()
+//                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+//
+//        return org.springframework.security.core.userdetails.User.builder()
+//                .username(user.getEmail())
+//                .password(user.getPassword())
+//                .roles(user.getRole().toString())
+//                .build();
+//    }
+
     public UserDetails findUserByEmail(String email) throws UsernameNotFoundException {
         User user = userRepository.findUserByEmail(email);
         if (user == null) {
@@ -66,7 +84,7 @@ public class UserService {
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getEmail())
                 .password(user.getPassword())
-                .roles(user.getRole().name())
+                .roles(user.getRole().toString())
                 .build();
     }
 }

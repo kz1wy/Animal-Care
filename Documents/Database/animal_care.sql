@@ -107,9 +107,9 @@ CREATE TABLE login_logs (
 
 -- Insert data into users table
 INSERT INTO users (username, password, email, role) VALUES
-('admin', '$2a$12$yYqhTllEOAeQKCqqYEyAyu0ymRUcfELuD/45vPrk7zjYGjbBwsVGm', 'admin@adzoo.com', 'ADMIN'),
-('hue', '$2a$12$yYqhTllEOAeQKCqqYEyAyu0ymRUcfELuD/45vPrk7zjYGjbBwsVGm', 'zkp@zoo.com', 'ZOOKEEPER'),
-('quang', '$2a$12$yYqhTllEOAeQKCqqYEyAyu0ymRUcfELuD/45vPrk7zjYGjbBwsVGm', 'vet@zoo.com', 'VETERINARIAN');
+('admin', '$2a$10$f8zGMdWfpa/P9888bqdnruCMbrAbDY.EYmCBmxoxlI/MDw0Yi9HjG', 'admin@adzoo.com', 'ADMIN'),
+('hue', '$2a$10$.itIu7T7y637QCLhPwmyYucE1i25KmXMuS4FTXSIjT77bQnZTZw0K', 'zkp@zoo.com', 'ZOOKEEPER'),
+('quang', '$2a$10$HLXynca5JvOuVQmmE/BLUuFya37fU2uRdFcjagglhV2692pAVzqtW', 'vet@zoo.com', 'VETERINARIAN');
 
 INSERT INTO login_logs (user_id, login_time) VALUES
 (1, '2022-03-01 09:00:00'),
@@ -149,9 +149,9 @@ INSERT INTO feeding_schedules (animal_id, enclosures_id, feeding_time, feeding_n
 
 -- Insert data into medical_records table
 INSERT INTO medical_records (animal_id, veterinarian_name, date_of_visit, diagnosis, prescription, notes) VALUES
-  (1, 'Dr. duy', '2022-03-01', 'Upper respiratory infection', 'Antibiotics', 'Animal showed signs of respiratory distress.'),
-  (2, 'Dr. quang', '2022-03-15', 'Feline leukemia virus', 'Vaccine', 'Animal tested positive for feline leukemia virus.'),
-  (3, 'Dr. Magaming', '2022-03-10', 'None', 'None', 'Routine check-up.');
+  (1, 'Dr. duy', '2022-03 '2022-03-15', 'Fel-01', 'Upper respiratory infection', 'Antibiotics', 'Animal showed signs of respiratory distress.'),
+  (2, 'Dr. quang',i virus', 'Vaccine', 'Animal tested positive for feline leukemia virus.'),
+  (3, 'Dr. Magaming', '2022-ne leukemia03-10', 'None', 'None', 'Routine check-up.');
 
 -- Insert data into health_records table
 INSERT INTO health_records (animal_id, veterinarian_id, date_of_visit, diagnosis, prescription, notes)

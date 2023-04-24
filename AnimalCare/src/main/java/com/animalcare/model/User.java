@@ -33,13 +33,14 @@ public class User {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    public User(int id, String username, String password, String email, Role role, LocalDateTime createdAt) {
-        this.id = id;
+    public User(){
+
+    }
+    public User(String username, String password, String email, Role role) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
-        this.createdAt = createdAt;
     }
 
     public int getId() {
