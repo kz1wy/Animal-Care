@@ -149,9 +149,9 @@ INSERT INTO feeding_schedules (animal_id, enclosures_id, feeding_time, feeding_n
 
 -- Insert data into medical_records table
 INSERT INTO medical_records (animal_id, veterinarian_name, date_of_visit, diagnosis, prescription, notes) VALUES
-  (1, 'Dr. duy', '2022-03 '2022-03-15', 'Fel-01', 'Upper respiratory infection', 'Antibiotics', 'Animal showed signs of respiratory distress.'),
-  (2, 'Dr. quang',i virus', 'Vaccine', 'Animal tested positive for feline leukemia virus.'),
-  (3, 'Dr. Magaming', '2022-ne leukemia03-10', 'None', 'None', 'Routine check-up.');
+  (1, 'Dr. duy', '2022-03-01', 'Upper respiratory infection', 'Antibiotics', 'Animal showed signs of respiratory distress.'),
+  (2, 'Dr. quang','2023-04-01', 'Vaccine', 'Animal tested positive for feline leukemia virus.'),
+  (3, 'Dr. Magaming', '2023-ne leukemia03-10', 'None', 'None', 'Routine check-up.');
 
 -- Insert data into health_records table
 INSERT INTO health_records (animal_id, veterinarian_id, date_of_visit, diagnosis, prescription, notes)
