@@ -1,4 +1,4 @@
-package com.animalcare.controller;
+package com.animalcare.controller.Admin;
 import com.animalcare.model.User;
 import com.animalcare.service.UserService;
 import org.springframework.web.bind.annotation.*;
