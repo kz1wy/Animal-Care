@@ -34,17 +34,11 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers(HttpMethod.POST,"/auth/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/").permitAll()
                 .requestMatchers(HttpMethod.GET, "/users").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/users/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT,  "/users/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.PATCH, "/api/products/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.GET, "/api/orders").permitAll()
-                .requestMatchers(HttpMethod.POST, "/api/orders").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.PUT, "/api/orders/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/api/orders/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -53,7 +47,7 @@ public class SecurityConfig {
                 .and()
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-        return (SecurityFilterChain)http.build();
+        return http.build();
     }
 
     @Bean

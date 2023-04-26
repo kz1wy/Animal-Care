@@ -162,5 +162,5 @@ VALUES
 	(3, 3, '2022-01-15', 'Skin rash', 'Antihistamines and topical ointment', 'Animal appears to be allergic to a certain type of plant in the enclosure.'),
 	(4, 2, '2022-04-01', 'Influenza', 'Antivirals and rest', 'Animal is currently under observation and will need to be monitored closely.');
 
-alter table feeding_schedules add column enclosure_id integer
+alter table feeding_schedules add column enclosure_id integer;
 alter table feeding_schedules add constraint FKtf3sy2y3q5xggncckd47wk1qy foreign key (enclosure_id) references enclosures (id)
