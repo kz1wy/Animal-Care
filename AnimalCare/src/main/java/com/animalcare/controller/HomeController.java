@@ -12,4 +12,8 @@ public class HomeController {
         model.addAttribute("message", "Welcome to Animal Care!");
         return "index";
     }
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login";
+    }
 }

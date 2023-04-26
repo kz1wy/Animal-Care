@@ -75,14 +75,12 @@ public class UserService {
 //                .build();
 //    }
 
-    public UserDetails findUserByEmail(String email) throws UsernameNotFoundException {
-        User user = userRepository.findUserByEmail(email);
-        if (user == null) {
-            throw new EntityNotFoundException("User with email " + email + " not found.");
-        }
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findUserByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
         return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getEmail())
+                .username(user.getUsername())
                 .password(user.getPassword())
                 .roles(user.getRole().toString())
                 .build();

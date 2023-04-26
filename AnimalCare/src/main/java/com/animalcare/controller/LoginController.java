@@ -1,7 +1,7 @@
 package com.animalcare.controller;
 
 import com.animalcare.config.JwtUtils;
-import com.animalcare.dto.AuthenticationRequest;
+import com.animalcare.dto.LoginRequest;
 import com.animalcare.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,25 +14,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/login")
 @RequiredArgsConstructor
-public class AuthenticationController {
+public class LoginController {
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
     private final JwtUtils jwtUtils;
 
-    @PostMapping("/authenticate")
-    public ResponseEntity<String> authenticate(
-            @RequestBody AuthenticationRequest request
-    ) {
+    @PostMapping("/auth")
+    public ResponseEntity<String> authenticate(@RequestBody LoginRequest request) {
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
         );
-        final UserDetails user = userService.findUserByEmail(request.getEmail());
+
+        final UserDetails user = userService.loadUserByUsername(request.getUsername());
         if (user != null){
             return ResponseEntity.ok(jwtUtils.generateToken(user));
         }
         return ResponseEntity.status(400).body("Some error has occurred");
     }
-
 }
