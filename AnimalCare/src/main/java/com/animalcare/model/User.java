@@ -24,7 +24,7 @@ public class User implements UserDetails {
     @Column(name = "email", nullable = false)
     private String email;
 
-    public enum Role {
+        public enum Role {
         ADMIN,
         VETERINARIAN,
         ZOOKEEPER
