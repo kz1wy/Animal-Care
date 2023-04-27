@@ -6,8 +6,18 @@
 body{
   color: rgb(75, 110, 175);
 }
-/* LOGIN */
-/* SIDEBAR */
+th{
+    text-align: center;
+}
+td{
+    text-align: center;
+    align-items: center;
+}
+
+.btn-right{
+    float: right;
+}
+
 .sidebar{
   background: #6d7fcc;
   color: white;
@@ -53,6 +63,13 @@ body{
   padding: 5px 30px;
   line-height: 60px;
 }
+
+.sidebar .user-sidebar{
+  position: relative;
+  padding: 30px 0px;
+}
+
+
 .sidebar.active .menu .item a span, .sidebar.active .menu .item a .arrow, .sidebar.active .menu .item .sub-menu a{
   display: none;
 }
@@ -85,7 +102,7 @@ body{
 .rotate{
   transform: rotate(90deg);
 }
-/* HEADBAR */
+
 .nav-top{
   background-image: linear-gradient(to right, #6d7fcc 0%, #7fe9bb 100%);
   color: white;
@@ -100,10 +117,10 @@ body{
   margin: 0 15px;
   cursor: pointer;
 }
-/* DASHBOARD */
+
 .dashboard{
   padding: 40px 50px;
-  height: 100vh;
+  height: auto;
   background-color: #dff9fcbd;
 }
 .dashboard-item{
@@ -138,7 +155,7 @@ body{
   font-size: 18px;
 }
 .newInfo{
-  padding: 80px 0;
+  padding: 50px 0;
 }
 .myTable{
   border: 1px solid rgb(212, 210, 210);
@@ -146,7 +163,6 @@ body{
   background-color: white;
 }
 
-/* PAGE NHAN VIEN */
 .welcome-staff{
   display: flex;
   align-items: center;
@@ -199,30 +215,191 @@ body{
 .item-info a:hover{
   font-weight: 600;
 }
-/* MODAL ADD STAFF */
+
+.user-panel {
+    clear: left;
+    display: block;
+    float: left;
+}
+
+.user-panel>.image>img {
+    width: 100%;
+    max-width: 45px;
+    height: auto;
+}
+.user-panel>.info,  .user-panel>.info>a {
+    color: #fff;
+}
+.user-panel>.info>p {
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+.user-panel {
+    clear: left;
+    display: block;
+    float: left;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 25px 15px;
+    border-bottom: 1px solid;
+}
+.user-panel>.info {
+    padding: 5px 5px 5px 15px;
+    line-height: 1;
+    position: absolute;
+    left: 55px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap);
+
+body {
+    font-family: "Roboto", sans-serif;
+    background: #EFF1F3;
+    min-height: 100vh;
+    position: relative;
+}
+
+.section-50 {
+    padding: 50px 0;
+}
+
+.m-b-50 {
+    margin-bottom: 50px;
+}
+
+.dark-link {
+    color: #333;
+}
+
+.heading-line {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.heading-line:after {
+    content: "";
+    height: 4px;
+    width: 75px;
+    background-color: #29B6F6;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.notification-ui_dd-content {
+    margin-bottom: 30px;
+}
+
+.notification-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 7px;
+    background: #fff;
+    -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+}
+
+.notification-list--unread {
+    border-left: 2px solid #29B6F6;
+}
+
+.notification-list .notification-list_content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.notification-list .notification-list_content .notification-list_img img {
+    height: 48px;
+    width: 48px;
+    border-radius: 50px;
+    margin-right: 20px;
+}
+
+.notification-list .notification-list_content .notification-list_detail p {
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.notification-list .notification-list_feature-img img {
+    height: 48px;
+    width: 48px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.fliph .user-panel{ display: none; }
+
+.animal-card{
+    padding: 15px;
+}
+.animal-card .item{
+    background: white;
+    border-radius: 8px;
+    border: 1px solid rgba(180, 179, 179, 0.822);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
 
 .register:hover{
   box-shadow: 5px 0 20px 0 rgba(63, 186, 108, 0.579);
 }
 .gradient-custom-3 {
-  /* fallback for old browsers */
   background: #84fab0;
 
-  /* Chrome 10-25, Safari 5.1-6 */
   background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
 
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
 }
 
 .gradient-custom-4 {
-  /* fallback for old browsers */
   background: #84fab0;
 
-  /* Chrome 10-25, Safari 5.1-6 */
   background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
 
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
 }
 #btnAddUser i{
@@ -245,7 +422,7 @@ body{
 .dashboard .show-form .add-form,.dashboard .change-form1{
   padding: 0 30px;
 }
-/* MODAL EDIT */
+
 #user-avatar{
   width: 100%;
   border-radius: 6px;
@@ -275,7 +452,6 @@ body{
   background-color: #2f439c;
 }
 
-/* DEPARTMENT */
 .depTable{
   background: white;
 }
@@ -297,7 +473,29 @@ body{
 .show-Department{
   width: 90%;
 }
-/* RESPONSIVE */
+
+.main-container {
+  grid-area: main;
+  overflow-y: auto;
+  padding: 20px 20px;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.charts-card {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  padding: 25px;
+  box-sizing: border-box;
+  -webkit-column-break-inside: avoid;
+  border: 1px solid #d2d2d3;
+  border-radius: 5px;
+  box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
 
 @media (min-width: 576px){
   .form_container{
@@ -309,7 +507,7 @@ body{
       display: none;
   }
 }
-@media (max-width: 992px){
+@media (max-width: 1202px){
   .welcome-title h2{
     font-size: 27px;
   }
@@ -326,3 +524,5 @@ body{
     width: 400px;
   }
 }
+
+

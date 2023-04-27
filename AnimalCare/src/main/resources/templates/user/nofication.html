@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BS4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font GG icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+    rel="stylesheet">
+    <link rel="stylesheet" type="text/html" href="/css/admin.css" th:href="@{/css/user.css}" />
+    <title>Thông báo</title>
+</head>
+<body>
+    <section class="sidebar">
+        <div class="logo-sidebar">
+            <img src="https://petdesk.com/wp-content/uploads/2020/08/PetDesk-White-Primary-Logo.png" class="me-2"
+                    height="40" alt="MDB Logo" loading="lazy" />
+        </div>
+        <ul class="menu">
+          <div class="item user">
+            <a href="./user.html">
+                <i class="bi bi-speedometer2"></i>
+                <span>Dashboard</span>
+            </a>
+          </div>
+          <div class="item user">
+            <a href="./nofication.html">
+                <i class="bi bi-bell"> </i>
+                <span>Thông báo</span>
+            </a> 
+          </div>
+          <div class="item user">
+              <a class="sub-btn">
+                <i class="fas fa-paw"> </i>
+                <span>Hồ sơ động vật</span>
+                 <i class="fas fa-angle-right arrow"></i>
+              </a>
+              <div class="sub-menu">
+               <a href="listAnimal.html" class="sub-item">  Xem hồ sơ động vật</a>
+               <a href="createAnimal.html" class="sub-item">  Tạo hồ sơ động vật</a>
+             </div>
+          </div>
+          <div class="item user">
+            <a class="sub-btn">
+                <i class="bi bi-clipboard2-pulse"></i>
+                <span>Hồ sơ sức khỏe</span>
+               <i class="fas fa-angle-right arrow"></i>
+            </a>
+            <div class="sub-menu">
+             <a href="listHealth.html" class="sub-item">  Xem hồ sơ sức khỏe</a>
+             <a href="createHealth.html" class="sub-item">  Tạo hồ sơ sức khỏe</a>
+           </div>
+        </div>
+          <div class="item user">
+            <a href="./login.html">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Đăng xuất</span>
+            </a>
+          </div>
+        </ul>
+    </section>
+    
+<section class="home-section">
+    <div class="nav-top">
+        <div class="header-left">
+            <h4><i class="fa fa-bars"></i></h4>
+        </div>
+        </div>
+    </div>
+    <div class="dashboard">
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+            <span class="close">&times;</span>
+            <form action="#" method="post">
+                <div class="form-outline mb-4">
+                    <select name="dropSelect" class="form-control form-control" id="nofiType" name="nofiType">
+                        <option value="" disabled selected hidden>Chọn loại nhắc nhở</option>
+                        <option value="Kiểm tra sức khỏe định kỳ">Kiểm tra sức khỏe định kỳ</option>
+                        <option value="Tiêm chủng">Tiêm chủng</option>
+                        <option value="">Tiêm chủng</option>
+                        <option value="">Tiêm chủng</option>
+                     </select>
+                </div>
+                <div class="form-outline mb-4">
+                    <select name="dropSelect" class="form-control form-control" id="animalType" name="animalType">
+                        <option value="" disabled selected hidden>Chọn loại động vật</option>
+                        <!-- Load từ database -->
+                        <option value="Hổ">Hổ</option>
+                        <option value="">Hổ</option>
+                     </select>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="search" id="animalID" name="animalID" class="form-control form-control" placeholder="Nhập ID động vật"/>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="date" id="checkDate" name="checkDate" class="form-control form-control"/>
+                </div>
+                <div class="row">
+                    <div class="db-card col-lg-12 col-12">
+                        <div class="btn-right">
+                            <button type="button"
+                              class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Tạo</button>
+                        </div>
+                    </div>
+                </div>
+                
+              </form>
+            </div>
+        </div>
+        <!-- End Modal-->
+
+        <div class="row">
+            <div class="db-card col-lg-3 col-6">
+                <button type="button" class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100" id="creataNofi" name="createNofi">Tạo nhắc nhở</button>
+            </div>
+        </div> 
+        <div class="newInfo">
+            <div class="newStaff">
+                <h3>Danh sách nhắc nhở</h3>
+                <table class="table table-bordered table-hover myTable">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Loại nhắc nhở</th>
+                            <th>Loại động vật</th>
+                            <th>ID động vật</th>
+                            <th>Ngày</th>
+                            <th>Đã hoàn thành</th>
+                        </tr>
+                    </thead>
+                    <tbody id="nofiBody">
+                       <td><p>1</p></td>
+                       <td><p>Tiêm chủng</p></td>
+                       <td><p>Hổ</p></td>
+                       <td><a href="animalHealth.html">ID</a></td>
+                       <td><p>25/04/2023</p></td>
+                       <td><input type="checkbox" name="finished" />&nbsp;</td>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+</section>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("creataNofi");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+    modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+</script>
+
+<!-- BS4 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script th:src="@{/js/user.js}"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+</body>
+</html>
