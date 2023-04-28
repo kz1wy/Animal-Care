@@ -16,6 +16,7 @@
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- MAIN -->
     <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 
@@ -81,15 +82,10 @@
             })
         }).then(data=>{
             console.log(data);
-            console.log(data.role);
             document.cookie = `token=${data}; path=/;`
             // Redirect to home page after login
-            // Check user role and redirect
-            // if (data.role === "ADMIN") {
-            //     window.location.href = "/admin/index";
-            // } else {
-            //     window.location.href = "/";
-            // }
+
+            window.location.href = "/";
         }).catch(err=>{
             console.log(err);
             // Display error message in case of incorrect login credentials
@@ -98,7 +94,6 @@
     }
 
 </script>
-
 </body>
 
 </html>

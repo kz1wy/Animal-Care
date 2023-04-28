@@ -1,8 +1,10 @@
 package com.animalcare.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,8 +26,13 @@ public class HomeController {
     }
 
     @GetMapping("/admin")
-    public String showAdminPage(Authentication authentication) {
-        List<GrantedAuthority> authorities = (List<GrantedAuthority>) authentication.getAuthorities();
-        return "admin/index";
+    public String showAdminPage() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            return "admin/index";
+        } else {
+            return "redirect:/index";
+        }
     }
+
 }
