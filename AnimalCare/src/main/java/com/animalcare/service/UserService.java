@@ -58,23 +58,6 @@ public class UserService {
         }
     }
 
-//    private final List<User> APPLICATION_USERS = Arrays.asList(
-//            new User("duy", new BCryptPasswordEncoder().encode("123"), "admin@gmail.com", User.Role.ADMIN)
-//    );
-
-//    public UserDetails findUserByEmail(String email) {
-//        User user = APPLICATION_USERS.stream()
-//                .filter(u -> u.getEmail().equals(email))
-//                .findFirst()
-//                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-//
-//        return org.springframework.security.core.userdetails.User.builder()
-//                .username(user.getEmail())
-//                .password(user.getPassword())
-//                .roles(user.getRole().toString())
-//                .build();
-//    }
-
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
@@ -82,7 +65,7 @@ public class UserService {
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
-                .roles(user.getRole().toString())
+                .roles(user.getRole().name())
                 .build();
     }
 }

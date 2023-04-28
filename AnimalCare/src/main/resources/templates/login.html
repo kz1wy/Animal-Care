@@ -2,8 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetDesk</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,7 +15,7 @@
           integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- MAIN -->
-    <link rel="stylesheet" type="text/html" href="/css/admin.css" th:href="@{/css/admin.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}" />
 </head>
 
 
@@ -26,25 +25,26 @@
     <div class="mask d-flex align-items-center gradient-custom-3 h-100">
         <div class="container h-100 d-flex justify-content-center align-items-center">
             <div class="form-login row d-flex justify-content-center align-items-center">
-                <div class="my-4 col-12 col-md-9 col-lg-7 col-xl-6">
+                <div>
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Sign in</h2>
                             <form>
+                                <div id="error-message" class="text-danger"></div>
                                 <div class="form-outline mb-4">
-                                    <input type="text" id="username" name="username" class="form-control form-control" placeholder="Your Username" />
+                                    <input type="text" id="username" name="username" class="form-control form-control" placeholder="Your Username" required/>
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="password" name="password" class="form-control form-control" placeholder="Password"/>
+                                    <input type="password" id="password" name="password" class="form-control form-control" placeholder="Password" required/>
                                 </div>
                                 <div class="form-check d-flex mb-5">
                                     <input class="form-check-input me-2" type="checkbox" value="" id="remember" name="remember"/>
                                     <label class="form-check-label" for="remember">
-                                        Remember account</a>
+                                        <a>Remember account</a>
                                     </label>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" id="signin"
+                                    <button type="button"
                                             onclick="login()"
                                             class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Sign in</button>
                                 </div>
@@ -73,7 +73,7 @@
         $.ajax({
             url: '/login/auth',
             type: 'POST',
-            dataType: 'text', // add dataType option
+            dataType: 'text',
             contentType: 'application/json',
             data: JSON.stringify({
                 username: $('#username').val(),
@@ -81,11 +81,22 @@
             })
         }).then(data=>{
             console.log(data);
+            console.log(data.role);
             document.cookie = `token=${data}; path=/;`
+            // Redirect to home page after login
+            // Check user role and redirect
+            // if (data.role === "ADMIN") {
+            //     window.location.href = "/admin/index";
+            // } else {
+            //     window.location.href = "/";
+            // }
         }).catch(err=>{
             console.log(err);
+            // Display error message in case of incorrect login credentials
+            $('#error-message').text("Incorrect username or password");
         })
     }
+
 </script>
 
 </body>
