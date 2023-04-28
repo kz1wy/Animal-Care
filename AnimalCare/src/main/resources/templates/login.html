@@ -16,7 +16,7 @@
           integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- MAIN -->
-    <link rel="stylesheet" type="text/html" href="/css/styles.css" th:href="@{/css/styles.css}" />
+    <link rel="stylesheet" type="text/html" href="/css/admin.css" th:href="@{/css/admin.css}" />
 </head>
 
 
@@ -30,15 +30,22 @@
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Sign in</h2>
-                            <form method="POST" th:action="@{/auth}">
+                            <form>
                                 <div class="form-outline mb-4">
                                     <input type="text" id="username" name="username" class="form-control form-control" placeholder="Your Username" />
                                 </div>
                                 <div class="form-outline mb-4">
                                     <input type="password" id="password" name="password" class="form-control form-control" placeholder="Password"/>
                                 </div>
+                                <div class="form-check d-flex mb-5">
+                                    <input class="form-check-input me-2" type="checkbox" value="" id="remember" name="remember"/>
+                                    <label class="form-check-label" for="remember">
+                                        Remember account</a>
+                                    </label>
+                                </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="submit"
+                                    <button type="button" id="signin"
+                                            onclick="login()"
                                             class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Sign in</button>
                                 </div>
                                 <p class="text-center text-muted mt-5 mb-0">Not a member yet? <a href="/register.html"
@@ -58,6 +65,29 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function login(){
+        $.ajax({
+            url: '/login/auth',
+            type: 'POST',
+            dataType: 'text', // add dataType option
+            contentType: 'application/json',
+            data: JSON.stringify({
+                username: $('#username').val(),
+                password: $('#password').val(),
+            })
+        }).then(data=>{
+            console.log(data);
+            document.cookie = `token=${data}; path=/;`
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+</script>
+
 </body>
 
 </html>
