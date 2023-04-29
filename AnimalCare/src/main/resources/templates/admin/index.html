@@ -16,143 +16,127 @@
     <title>Admin</title>
 </head>
 <body>
-    <section class="sidebar">
-        <div class="logo-sidebar">
-            <img src="https://petdesk.com/wp-content/uploads/2020/08/PetDesk-White-Primary-Logo.png" class="me-2"
-                    height="40" alt="MDB Logo" loading="lazy" />
-        </div>
-        <ul class="menu">
-          <div class="item admin">
-            <a href="./index.html">
-              <span>Dashboard</span>
+<section class="sidebar">
+    <div class="logo-sidebar">
+        <img src="https://petdesk.com/wp-content/uploads/2020/08/PetDesk-White-Primary-Logo.png" class="me-2"
+             height="40" alt="MDB Logo" loading="lazy" />
+    </div>
+    <ul class="menu">
+        <div class="item admin">
+            <a href="/admin">
+                <span>Dashboard</span>
             </a>
-          </div>
-          <div class="item admin">
-              <a class="sub-btn">
-                <span>Employees</span>
-                 <i class="fas fa-angle-right arrow"></i>
-              </a>
-              <div class="sub-menu">
-               <a href="danh-sach-nhan-vien.html" class="sub-item">Employee management</a>
-               <a href="them-nhan-vien.html" class="sub-item">Add Employee</a>
-             </div>
-          </div>
-          <div class="item admin">
-            <a class="sub-btn">
-              <span>Employees</span>
-               <i class="fas fa-angle-right arrow"></i>
-            </a>
-            <div class="sub-menu">
-             <a href="danh-sach-nhan-vien.html" class="sub-item">Employee management</a>
-             <a href="them-nhan-vien.html" class="sub-item">Add Employee</a>
-           </div>
         </div>
-          <div class="item admin">
+        <div class="item admin">
+            <a href="/admin/add-user">
+                <span>Add user</span>
+            </a>
+        </div>
+        <div class="item admin">
             <a href="../index.html">
-              <span>Log out</span>
+                <span>Log out</span>
             </a>
-          </div>
-        </ul>
-    </section>
-    
+        </div>
+    </ul>
+</section>
 <section class="home-section">
     <div class="nav-top">
         <div class="header-left">
             <h4><i class="fa fa-bars"></i></h4>
         </div>
-        </div>
     </div>
-    <div class="dashboard">
-        <div class="row">
-            <div class="db-card col-lg-4 col-12">
-                <div class="db-item">
-                    <div class="db-box1">
-                        <div class="db-box-icon">
-                            <i class="fa fa-user"></i>
-                        </div>
-                    </div>
-                    <div class="db-box2">
-                        <div class="db-box-content">
-                                <!-- lấy từ database xuống -->
-                                <h4>Số nhân viên</h4>
-                                <p>Nhân viên</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="db-card col-lg-4 col-12">
-                <div class="db-item">
-                    <div class="db-box1">
-                        <div class="db-box-icon">
-                        <i class="material-icons">work</i>
-                        </div>
-                    </div>
-                    <div class="db-box2">
-                        <div class="db-box-content">
-                                <!-- lấy từ database xuống -->
-                                <h4>Số ban</h4>
-                                <p>Phòng ban</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="db-card col-lg-4 col-12">
-                <div class="db-item">
-                    <div class="db-box1">
-                        <div class="db-box-icon">
-                        <i class="material-icons">work</i>
-                        </div>
-                    </div>
-                    <div class="db-box2">
-                        <div class="db-box-content">
-                                <!-- lấy từ database xuống -->
-                                <h4>Số ban</h4>
-                                <p>Phòng ban</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="newInfo">
-            <div class="newStaff">
-                <h3>Table</h3>
-                <table class="table table-bordered table-hover myTable">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Họ và Tên</th>
-                            <th>Tên người dùng</th>
-                            <th>Phòng ban</th>
-                            <th>Chức vụ</th>
-                        </tr>
-                    </thead>
-                    <tbody id="staffBody">
-                       
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="newInfo">
-            <div class="newStaff">
-                <h3>Table</h3>
-                <table class="table table-bordered table-hover myTable">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Họ và Tên</th>
-                            <th>Tên người dùng</th>
-                            <th>Phòng ban</th>
-                            <th>Chức vụ</th>
-                        </tr>
-                    </thead>
-                    <tbody id="userBody">
-                       
-                    </tbody>
-                </table>
-            </div>
-        </div>
     </div>
+    <section class="dashboard">
+        <div class="welcome-staff row">
+            <div class="welcome-title col-md-6">
+                <h2>User management</h2>
+            </div>
+        </div>
+        <div class="main-body py-4">
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="input-group w-50">
+                        <input type="text" class="form-control" placeholder="Tìm kiếm" id="searchName">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="btnSearchUser"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Đưa dữ liệu lên phần này -->
+            <div class="show-staff py-1 m-auto">
+                <div class="row" id="show-staff">
+                    <!-- thêm data ở đây -->
+                    <div class='staff-card col-lg-4 col-6'>
+                        <div class='item'>
+                            <div class='item-img'>
+                                <img src='' alt=''>
+                            </div>
+                            <div class='item-info'>
+                                <h5>Name</h5>
+                                <p>Lorem</p>
+                                <p>Lorem</p>
+                                <a class='editbtn' id="id">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </section>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <header class="head-form px-3">
+                <h3 id="header-title">Thông tin nhân viên</h3>
+            </header>
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form role="form" id="show-Info-Staff">
+                    <div class="row col-6">
+                        <div class="form-group">
+                            <img name="avatar" id="user-avatar" src="" alt="user-avatar">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group px-2">
+                            <label class="control-label" for="name">Họ và tên:</label>
+                            <input type="text" class="form-control update" name="name" id="name" value = "" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group px-2">
+                            <label class="control-label" for="name">Tên người dùng:</label>
+                            <input type="text" class="form-control update" name="username" id="username" value = "" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group px-2">
+                            <label class="control-label" for="department">Phòng ban:</label>
+                            <input type="text" class="form-control" name="department" id="department" value = "" disabled>
+                        </div>
+                        <div class="form-group px-2">
+                            <label class="control-label" for="role">Chức vụ:</label>
+                            <input type="text" class="form-control" name="role" id="role" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group px-2">
+                            <label class="control-label" for="day-leave">Số ngày đã xin nghỉ:</label>
+                            <input type="number" class="form-control" name="day-leave" id="day-leave" disabled>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer" id="modal-footer">
+                <button id="btnSaveStaff" type="submit" name="resetPW">Reset mật khẩu</button>
+                <button id="btnClose" type="button" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- BS4 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
