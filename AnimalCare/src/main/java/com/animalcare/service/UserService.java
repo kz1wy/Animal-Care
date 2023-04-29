@@ -36,6 +36,10 @@ public class UserService {
     }
 
     public User createUser(User user) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
+
         user.setCreatedAt(LocalDateTime.now());
         return userRepository.save(user);
     }

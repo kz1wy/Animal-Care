@@ -29,25 +29,33 @@ public class UserController {
             return "redirect:/index";
         }
     }
-//    @GetMapping("/admin/add-user")
-//    public String showAddUserPage() {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        if (authentication != null && authentication.isAuthenticated()) {
-//            return "admin/add-user";
-//        } else {
-//            return "redirect:/index";
-//        }
-//    }
+  @GetMapping("/add-user")
+  public String showAddUserPage(Model model) {
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+     if (authentication != null && authentication.isAuthenticated()) {
+         User user = new User();
+         model.addAttribute("user",user);
+       return "admin/add-user";
+       } else {
+           return "redirect:/index";
+       }
+   }
     @GetMapping("/{id}")
     public User getUserById(@PathVariable int id) {
-
         return userService.getUserById(id);
+
+    }
+    @PostMapping(value = "/add-user")
+    public String createUser(@ModelAttribute User user) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            userService.createUser(user);
+            return "redirect:/admin";
+        } else {
+            return "redirect:/add-user";
+        }
     }
 
-    @PostMapping("")
-    public User createUser(@RequestBody User user) {
-        return userService.createUser(user);
-    }
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable int id) {
@@ -58,4 +66,5 @@ public class UserController {
     public User updateUser(@PathVariable int id, @RequestBody User updatedUser) {
         return userService.updateUser(id, updatedUser);
     }
+
 }

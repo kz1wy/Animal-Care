@@ -54,16 +54,33 @@
 			</div>
             <br>
             <div class="show-form m-auto">
-                <form class="add-form m-auto py-5" action="" method="POST">
+                <form class="add-form m-auto py-5" th:action="@{/admin/add-user}" th:object="${user}" method="POST" >
                     <div class="form-group">
-                        <label class="control-label" for="add-name">Fullname:</label>
-                        <input type="text" class="form-control" name="add-name" id="add-name" value = "">
+                        <label class="control-label" for="add-email">Email:</label>
+                        <input type="email" class="form-control" name="email" id="add-email"th:field="*{email}" >
                         <div class="thongbao" id="txtName"></div>
                     </div>
                     <div class="form-group">
                         <label class="control-label" for="add-user-name">Username:</label>
-                        <input type="text" class="form-control" name="add-user-name" id="add-user-name" value = "">
+                        <input type="text" class="form-control" name="username" id="add-user-name"th:field="*{username}" >
                         <div class="thongbao" id="txtUserName"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="add-password">Password:</label>
+                        <input type="password" class="form-control" name="password" id="add-password"th:field="*{password}" >
+                        <div class="thongbao" id="txtpPassword"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <input type="radio"  name="role" id="add-role-admin" th:field="*{role}" th:value="ADMIN">
+                        <label for="add-role-admin">Admin</label>
+
+                        <input type="radio" name="role" id="add-role-vet" th:field="*{role}" th:value="VETERINARIAN">
+                        <label for="add-role-vet">Veterinarian</label>
+
+                        <input type="radio" name="role" id="add-role-zk" th:field="*{role}" th:value="ZOOKEEPER">
+                        <label for="add-role-zk">Zookeeper</label>
+                        <div class="thongbao" id="txtRole"></div>
                     </div>
                     <button type="submit" id="btnAddUser" name="themNV" class="btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-25 mx-auto"><i class="fa fa-plus"></i> Add</button>
                 </form>
