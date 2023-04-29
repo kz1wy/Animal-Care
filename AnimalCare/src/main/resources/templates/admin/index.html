@@ -80,7 +80,56 @@
                                     <p>Lorem</p>
                                     <p>Lorem</p>
 <!--                                    th:attr="data-target='#myModal+*{user.id}"-->
-                                    <a class='editbtn' id="id" >Detail</a>
+                                    <a class='editbtn' id="id"  data-toggle="modal" th:data-target="'#myModal'+${user.username}">Detail</a>
+                                    <div th:fragment="myModalFragment">
+                                        <div class="modal fade" th:id="'myModal' + ${user.username}" >
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <header class="head-form px-3">
+                                                        <h3 id="header-title">Thông tin nhân viên</h3>
+                                                    </header>
+                                                    <!-- Modal body -->
+                                                    <div class="modal-body">
+                                                        <form role="form" id="show-Info-Staff">
+                                                            <div class="row col-6">
+                                                                <div class="form-group">
+                                                                    <img name="avatar" id="user-avatar" src="" alt="user-avatar">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group px-2">
+                                                                    <label class="control-label" for="i">ID:</label>
+                                                                    <input type="text" class="form-control update" name="id" id="i" th:value="${user.id}"  disabled>
+                                                                </div>
+
+
+                                                                <div class="form-group px-2">
+                                                                    <label class="control-label" for="username">Username:</label>
+                                                                    <input type="text" class="form-control update" name="username" id="username" th:value="${user.username}" disabled>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group px-2">
+                                                                    <label class="control-label" for="email">Email:</label>
+                                                                    <input type="text" class="form-control" name="email" id="email" th:value="${user.email}"disabled>
+                                                                </div>
+                                                                <div class="form-group px-2">
+                                                                    <label class="control-label" for="role">Role:</label>
+                                                                    <input type="text" class="form-control" name="role" id="role"th:value="${user.role}" disabled>
+                                                                </div>
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer" id="modal-footer">
+                                                        <button id="btnSaveStaff" type="submit" name="resetPW">Reset mật khẩu</button>
+                                                        <button id="btnClose" type="button" data-dismiss="modal">Đóng</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -91,54 +140,8 @@
 
     </section>
 </section>
-<!--th:id="*{myModal+{user.id}}"-->
-<div class="modal fade" >
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <header class="head-form px-3">
-                <h3 id="header-title">Thông tin nhân viên</h3>
-            </header>
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form role="form" id="show-Info-Staff">
-                    <div class="row col-6">
-                        <div class="form-group">
-                            <img name="avatar" id="user-avatar" src="" alt="user-avatar">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group px-2">
-                            <label class="control-label" for="i">ID:</label>
-                            <input type="text" class="form-control update" name="id" id="i" value=""  disabled>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group px-2">
-                            <label class="control-label" for="username">Username:</label>
-                            <input type="text" class="form-control update" name="username" id="username" value="" disabled>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group px-2">
-                            <label class="control-label" for="email">Email:</label>
-                            <input type="text" class="form-control" name="email" id="email" value=disabled>
-                        </div>
-                        <div class="form-group px-2">
-                            <label class="control-label" for="role">Role:</label>
-                            <input type="text" class="form-control" name="role" id="role" disabled>
-                        </div>
-                    </div>
 
-                </form>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer" id="modal-footer">
-                <button id="btnSaveStaff" type="submit" name="resetPW">Reset mật khẩu</button>
-                <button id="btnClose" type="button" data-dismiss="modal">Đóng</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- BS4 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
