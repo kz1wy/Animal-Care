@@ -45,27 +45,27 @@ public class HomeController {
         return "register";
     }
 
-    @GetMapping("/admin")
-    public String getAllUsers(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            List<User> listUser = userService.getAllUsers();
-            model.addAttribute("listUser",listUser);
-            return "admin/index";
-        } else {
-            return "redirect:/index";
-        }
-    }
+//    @GetMapping("/admin")
+//    public String getAllUsers(Model model) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        if (authentication != null && authentication.isAuthenticated()) {
+//            List<User> listUser = userService.getAllUsers();
+//            model.addAttribute("listUser",listUser);
+//            return "admin/index";
+//        } else {
+//            return "redirect:/index";
+//        }
+//    }
 
-    @GetMapping("/admin/add-user")
-    public String showAddUserPage() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            return "admin/add-user";
-        } else {
-            return "redirect:/index";
-        }
-    }
+//    @GetMapping("/admin/add-user")
+//    public String showAddUserPage() {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        if (authentication != null && authentication.isAuthenticated()) {
+//            return "admin/add-user";
+//        } else {
+//            return "redirect:/index";
+//        }
+//    }
 
     @GetMapping("/user")
     public String showUserPage() {

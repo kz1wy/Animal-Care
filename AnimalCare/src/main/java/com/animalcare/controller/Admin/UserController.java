@@ -3,14 +3,13 @@ import com.animalcare.model.User;
 import com.animalcare.service.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import org.springframework.ui.Model;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-@RestController
-@RequestMapping("/users")
+@Controller
+@RequestMapping("/admin")
 public class UserController {
 
     private final UserService userService;
@@ -19,18 +18,26 @@ public class UserController {
         this.userService = userService;
     }
 
-//    @GetMapping("")
-//    public String getAllUsers(Model model) {
+    @GetMapping("")
+    public String getAllUsers(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            List<User> listUser = userService.getAllUsers();
+            model.addAttribute("listUser",listUser);
+            return "admin/index";
+        } else {
+            return "redirect:/index";
+        }
+    }
+//    @GetMapping("/admin/add-user")
+//    public String showAddUserPage() {
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        if (authentication != null && authentication.isAuthenticated()) {
-//            List<User> listUser = userService.getAllUsers();
-//            model.addAttribute("listUser",listUser);
-//            return "admin/index";
+//            return "admin/add-user";
 //        } else {
 //            return "redirect:/index";
 //        }
 //    }
-
     @GetMapping("/{id}")
     public User getUserById(@PathVariable int id) {
         return userService.getUserById(id);
