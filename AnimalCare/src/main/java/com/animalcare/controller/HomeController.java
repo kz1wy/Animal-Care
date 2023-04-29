@@ -1,8 +1,11 @@
 package com.animalcare.controller;
 
+import com.animalcare.model.User;
+import com.animalcare.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,6 +20,7 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class HomeController {
+    private final UserService userService;
     @GetMapping("/")
     public String showHomePage(Model model) {
         model.addAttribute("message", "Welcome to Animal Care!");
@@ -42,14 +46,17 @@ public class HomeController {
     }
 
     @GetMapping("/admin")
-    public String showAdminPage() {
+    public String getAllUsers(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
+            List<User> listUser = userService.getAllUsers();
+            model.addAttribute("listUser",listUser);
             return "admin/index";
         } else {
             return "redirect:/index";
         }
     }
+
     @GetMapping("/admin/add-user")
     public String showAddUserPage() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

@@ -7,11 +7,12 @@
     <!-- BS4 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Font GG icon -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
-    rel="stylesheet">
+          rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}" />
     <title>Admin</title>
 </head>
@@ -64,28 +65,34 @@
                 </div>
             </div>
             <!-- Đưa dữ liệu lên phần này -->
-            <div class="show-staff py-1 m-auto">
-                <div class="row" id="show-staff">
-                    <!-- thêm data ở đây -->
-                    <div class='staff-card col-lg-4 col-6'>
-                        <div class='item'>
-                            <div class='item-img'>
-                                <img src='' alt=''>
-                            </div>
-                            <div class='item-info'>
-                                <h5>Name</h5>
-                                <p>Lorem</p>
-                                <p>Lorem</p>
-                                <a class='editbtn' id="id">Detail</a>
+
+            <div>
+                <div class="show-staff py-1 m-auto" >
+                    <div class="row" id="show-staff">
+                        <!-- thêm data ở đây -->
+                        <div th:each="user: ${listUser}" class='staff-card col-lg-4 col-6'>
+                            <div class='item'>
+                                <div class='item-img'>
+                                    <img  src="" alt=''>
+                                </div>
+                                <div class='item-info'>
+                                    <h5 th:text="${user.username}"></h5>
+                                    <p>Lorem</p>
+                                    <p>Lorem</p>
+<!--                                    th:attr="data-target='#myModal+*{user.id}"-->
+                                    <a class='editbtn' id="id" >Detail</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
 </section>
-<div class="modal fade" id="myModal">
+<!--th:id="*{myModal+{user.id}}"-->
+<div class="modal fade" >
     <div class="modal-dialog">
         <div class="modal-content">
             <header class="head-form px-3">
@@ -101,32 +108,27 @@
                     </div>
                     <div class="row">
                         <div class="form-group px-2">
-                            <label class="control-label" for="name">Họ và tên:</label>
-                            <input type="text" class="form-control update" name="name" id="name" value = "" disabled>
+                            <label class="control-label" for="i">ID:</label>
+                            <input type="text" class="form-control update" name="id" id="i" value=""  disabled>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group px-2">
-                            <label class="control-label" for="name">Tên người dùng:</label>
-                            <input type="text" class="form-control update" name="username" id="username" value = "" disabled>
+                            <label class="control-label" for="username">Username:</label>
+                            <input type="text" class="form-control update" name="username" id="username" value="" disabled>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group px-2">
-                            <label class="control-label" for="department">Phòng ban:</label>
-                            <input type="text" class="form-control" name="department" id="department" value = "" disabled>
+                            <label class="control-label" for="email">Email:</label>
+                            <input type="text" class="form-control" name="email" id="email" value=disabled>
                         </div>
                         <div class="form-group px-2">
-                            <label class="control-label" for="role">Chức vụ:</label>
+                            <label class="control-label" for="role">Role:</label>
                             <input type="text" class="form-control" name="role" id="role" disabled>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group px-2">
-                            <label class="control-label" for="day-leave">Số ngày đã xin nghỉ:</label>
-                            <input type="number" class="form-control" name="day-leave" id="day-leave" disabled>
-                        </div>
-                    </div>
+
                 </form>
             </div>
             <!-- Modal footer -->
@@ -141,5 +143,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 <script th:src="@{/js/admin.js}"></script>
+
 </body>
 </html>
