@@ -1,5 +1,7 @@
 package com.animalcare.controller;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -23,6 +25,15 @@ public class HomeController {
     @GetMapping("/login")
     public String showLoginPage() {
         return "login";
+    }
+
+    @GetMapping("/log-out")
+    public String logOutPage(HttpServletResponse response) {
+        Cookie cookie = new Cookie("token", null);
+        cookie.setPath("/");
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+        return "redirect:/";
     }
 
     @GetMapping("/register")
@@ -54,6 +65,44 @@ public class HomeController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {
             return "user/index";
+        } else {
+            return "redirect:/index";
+        }
+    }
+    @GetMapping("/user/animal-profiles")
+    public String showAnimalProfilesPage() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            return "user/animal-profiles";
+        } else {
+            return "redirect:/index";
+        }
+    }
+
+    @GetMapping("/user/create-animal-profiles")
+    public String showCreateAnimalProfilePage() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            return "user/create-animal-profile";
+        } else {
+            return "redirect:/index";
+        }
+    }
+    @GetMapping("/user/health-record")
+    public String showHealthRecordPage() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            return "user/animal-profiles";
+        } else {
+            return "redirect:/index";
+        }
+    }
+
+    @GetMapping("/user/create-health-record")
+    public String showCreateHealthRecordePage() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            return "user/create-health-record";
         } else {
             return "redirect:/index";
         }

@@ -16,55 +16,54 @@
     <title>Hồ sơ động vật</title>
 </head>
 <body>
-    <section class="sidebar">
-        <div class="logo-sidebar">
-            <img src="https://petdesk.com/wp-content/uploads/2020/08/PetDesk-White-Primary-Logo.png" class="me-2"
-                    height="40" alt="MDB Logo" loading="lazy" />
-        </div>
-        <ul class="menu">
-          <div class="item user">
-            <a href="./user.html">
+<section class="sidebar">
+    <div class="logo-sidebar">
+        <img src="https://zooatlanta.org/wp-content/themes/zoo-atlanta/images/zoo-atlanta-square-logo.png" class="me-2"
+             height="40" alt="MDB Logo" loading="lazy" />
+    </div>
+    <ul class="menu">
+        <div class="item user">
+            <a href="/user">
                 <i class="bi bi-speedometer2"></i>
                 <span>Dashboard</span>
             </a>
-          </div>
-          <div class="item user">
-            <a href="./nofication.html">
+        </div>
+        <div class="item user">
+            <a href="user/notification">
                 <i class="bi bi-bell"> </i>
-                <span>Thông báo</span>
-            </a> 
-          </div>
-          <div class="item user">
-              <a class="sub-btn">
-                <i class="fas fa-paw"> </i>
-                <span>Hồ sơ động vật</span>
-                 <i class="fas fa-angle-right arrow"></i>
-              </a>
-              <div class="sub-menu">
-               <a href="listAnimal.html" class="sub-item">  Xem hồ sơ động vật</a>
-               <a href="createAnimal.html" class="sub-item">  Tạo hồ sơ động vật</a>
-             </div>
-          </div>
-          <div class="item user">
+                <span>Notification</span>
+            </a>
+        </div>
+        <div class="item user">
             <a class="sub-btn">
-                <i class="bi bi-clipboard2-pulse"></i>
-                <span>Hồ sơ sức khỏe</span>
-               <i class="fas fa-angle-right arrow"></i>
+                <i class="fas fa-paw"> </i>
+                <span>Animal Profiles</span>
+                <i class="fas fa-angle-right arrow"></i>
             </a>
             <div class="sub-menu">
-             <a href="listHealth.html" class="sub-item">  Xem hồ sơ sức khỏe</a>
-             <a href="createHealth.html" class="sub-item">  Tạo hồ sơ sức khỏe</a>
-           </div>
+                <a href="user/animal-profiles" class="sub-item"> Show animal profiles</a>
+                <a href="user/create-animal-profile" class="sub-item">  Create animal profile</a>
+            </div>
         </div>
-          <div class="item user">
-            <a href="./login.html">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Đăng xuất</span>
+        <div class="item user">
+            <a class="sub-btn">
+                <i class="bi bi-clipboard2-pulse"></i>
+                <span>Health record</span>
+                <i class="fas fa-angle-right arrow"></i>
             </a>
-          </div>
-        </ul>
-    </section>
-    
+            <div class="sub-menu">
+                <a href="user/health-record" class="sub-item"> Show health record</a>
+                <a href="user/create-health-record" class="sub-item"> Create health record</a>
+            </div>
+        </div>
+        <div class="item user">
+            <a href="/log-out">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Log out</span>
+            </a>
+        </div>
+    </ul>
+</section>
 <section class="home-section">
     <div class="nav-top">
         <div class="header-left">
