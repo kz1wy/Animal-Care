@@ -158,11 +158,12 @@ a{
 }
 .services__item img{
     width: 100%;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 .services__text{
-    margin: 1.2rem;
+    margin: 1rem;
     text-align: center;
-    line-height: 1.3rem;
     color: gray;
 }
 .services__text p{
