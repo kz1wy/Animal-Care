@@ -23,6 +23,8 @@ public class JwtUtils {
         return generateToken(new HashMap<>(), userDetails);
     }
     public String generateToken(Map<String, Object> extractClaims, UserDetails userDetails) {
+        String role = userDetails.getAuthorities().iterator().next().getAuthority();
+        extractClaims.put("role", role);
         return Jwts
                 .builder()
                 .setClaims(extractClaims)

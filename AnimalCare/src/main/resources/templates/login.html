@@ -69,6 +69,7 @@
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jwt-decode/3.1.2/jwt-decode.min.js"></script>
 <script>
     function login(){
         $.ajax({
@@ -83,9 +84,13 @@
         }).then(data=>{
             console.log(data);
             document.cookie = `token=${data}; path=/;`
-            // Redirect to home page after login
-
-            window.location.href = "/";
+            const decodedToken = JSON.parse(atob(data.split('.')[1])); // Parse JWT token to extract user's role
+            console.log(decodedToken.role);
+            if (decodedToken.role == 'ROLE_ADMIN') { // Check user's role
+                window.location.href = "/admin";
+            } else {
+                window.location.href = "/user";
+            }
         }).catch(err=>{
             console.log(err);
             // Display error message in case of incorrect login credentials
