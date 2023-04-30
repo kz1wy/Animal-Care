@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
     rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user.css}" />
-    <title>Hồ sơ sức khỏe</title>
+    <title>Hồ sơ động vật</title>
 </head>
 <body>
 <section class="sidebar">
@@ -74,7 +74,7 @@
     <section class="dashboard">
         <div class="welcome-staff row">
             <div class="welcome-title col-md-6">
-                <h2>Danh sách hồ sơ sức khỏe</h2>
+                <h2>Danh sách động vật</h2>
             </div>
         </div>
         <div class="main-body py-4">
@@ -101,7 +101,6 @@
                             <h5>ID</h5>
                             <p>Loại</p>
                             <p>Tuổi</p>
-                            <p>Tình trạng</p>
                             <div class="row">
                                 <div class="db-card col-lg-12 col-12">
                                     <div class="d-flex justify-content-center">
@@ -135,17 +134,7 @@
                 <div class="form-outline mb-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="medicalID">ID</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="text" id="medicalID" name="medicalID" class="form-control form-control" value="" disabled/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="animalID">ID động vật</label>
+                            <label name="lid" for="animalID">ID</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="text" id="animalID" name="animalID" class="form-control form-control" value="" disabled/>
@@ -155,53 +144,89 @@
                 <div class="form-outline mb-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="docName">Bác sĩ</label>
+                            <label name="ltype" for="animalType">Loại động vật</label>
                         </div>
                         <div class="col-lg-6">
-                            <input type="text" id="docName" name="docName" class="form-control form-control" value=""/>
+                            <select name="dropSelect" class="form-control form-control" id="animalType" name="animalType">
+                                <option value="" disabled selected hidden>Chọn loại động vật</option>
+                                <!-- Load từ database -->
+                                <option value="Hổ">Hổ</option>
+                                <option value="">Hổ</option>
+                             </select>
+                        </div>
+                    </div> 
+                </div>
+                <div class="form-outline mb-4">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label name="ltype" for="animalGender">Giới tính</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <select name="dropSelect" class="form-control form-control" id="animalGender" name="animalGender">
+                                <option value="" disabled selected hidden>Chọn giới tính</option>
+                                <option value="Đực">Đực</option>
+                                <option value="Đực">Cái</option>
+                                <option value="Chưa xác định">Chưa xác định</option>
+                             </select>
+                        </div>
+                    </div> 
+                </div>
+                <div class="form-outline mb-4">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label name="dob" for="animalDOB">Ngày sinh</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="date" id="animalDOB" name="animalDOB" class="form-control form-control"/>
                         </div>
                     </div>
                 </div>
                 <div class="form-outline mb-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="dateCheck">Ngày kiểm tra</label>
+                            <label name="lage" for="animalAge">Tuổi</label>
                         </div>
                         <div class="col-lg-6">
-                            <input type="date" id="dateCheck" name="dateCheck" class="form-control form-control"/>
+                            <input type="text" id="animalAge" name="animalAge" class="form-control form-control" value="" disabled/>
                         </div>
                     </div>
                 </div>
                 <div class="form-outline mb-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="animalDia">Chẩn đoán</label>
+                            <label >Cân nặng</label>
                         </div>
-                        <div class="col-lg-6">
-                            <textarea id="animalDia" name="animalDia" class="form-control form-control" value=""></textarea>
+                        <div class="col-lg-4 col-4">
+                            <input type="number" id="animalWeight" name="animalWeight" class="form-control form-control"/>
                         </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="animalPre">Chỉ định</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <textarea id="animalPre" name="animalPre" class="form-control form-control" value=""></textarea>
+                        <div class="col-lg-2 col-4">
+                            <select name="dropSelect" class="form-control form-control">
+                                <option value="kg">kg</option>
+                                <option value="g">g</option>
+                             </select>
                         </div>
                     </div>
                 </div>
                 <div class="form-outline mb-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="animalNote">Ghi chú</label>
+                            <label name="arrive" for="dateArrive">Ngày nhận chăm sóc</label>
                         </div>
                         <div class="col-lg-6">
-                            <textarea id="animalNote" name="animalNote" class="form-control form-control" value=""></textarea>
+                            <input type="date" id="dateArrive" name="dateArrive" class="form-control form-control"/>
                         </div>
                     </div>
-                </div>  
+                </div>
+                <div class="form-outline mb-4">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label name="lExhi" for="animalExhi">Chuồng</label>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" id="animalExhi" name="animalExhi" class="form-control form-control" value=""/>
+                        </div>
+                    </div> 
+                </div>
                 <div class="db-card col-lg-12 col-12">
                     <div class="btn-right">
                         <button type="button"
@@ -213,7 +238,6 @@
         </div>
         <!-- End Modal-->
 </section>
-
 <script>
     // Get the modal
     var modal = document.getElementById("myModal");
@@ -246,12 +270,10 @@
             image.src = URL.createObjectURL(event.target.files[0]);
         };
 </script>
-
+    <script th:src="@{/js/user.js}"></script>
 <!-- BS4 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-    <script th:src="@{/js/user.js}"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-
 </body>
 </html>
