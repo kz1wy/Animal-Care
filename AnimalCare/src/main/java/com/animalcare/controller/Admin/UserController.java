@@ -29,17 +29,17 @@ public class UserController {
             return "redirect:/index";
         }
     }
-  @GetMapping("/add-user")
-  public String showAddUserPage(Model model) {
-      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-     if (authentication != null && authentication.isAuthenticated()) {
-         User user = new User();
-         model.addAttribute("user",user);
-       return "admin/add-user";
-       } else {
-           return "redirect:/index";
-       }
-   }
+//  @GetMapping("/add-user")
+//  public String showAddUserPage(Model model) {
+//      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//     if (authentication != null && authentication.isAuthenticated()) {
+//         User user = new User(request.getUsername(), request.getPassword(), request.getEmail(), request.getRole(), request.getCreatedAt());
+//         model.addAttribute("user",user);
+//       return "admin/add-user";
+//       } else {
+//           return "redirect:/index";
+//       }
+//   }
     @GetMapping("/{id}")
     public User getUserById(@PathVariable int id) {
         return userService.getUserById(id);

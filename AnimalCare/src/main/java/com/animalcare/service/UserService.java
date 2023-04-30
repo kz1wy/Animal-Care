@@ -9,7 +9,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +33,6 @@ public class UserService {
             throw new EntityNotFoundException("User with id " + id + " not found.");
         }
     }
-
     public User createUser(User user) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(user.getPassword());
@@ -61,15 +59,32 @@ public class UserService {
             throw new EntityNotFoundException("User with id " + id + " not found.");
         }
     }
-
+    public User findUserByUsername(String username){
+        return userRepository.findUserByUsername(username);
+    }
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findUserByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+        User user = userRepository.findUserByUsername(username);
+        if (user == null){
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
 
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword())
-                .roles(user.getRole().name())
+                .authorities(user.getAuthorities())
                 .build();
+    }
+
+    public String singUpUser(User user){
+        if (userRepository.findUserByUsername(user.getUsername()) != null){
+            throw new IllegalStateException("username already exist");
+        }
+        String encodePassword = new BCryptPasswordEncoder().encode(user.getPassword());
+
+        user.setPassword(encodePassword);
+
+        userRepository.save(user);
+        // TODO: Send confirmation token
+        return "OK";
     }
 }

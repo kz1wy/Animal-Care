@@ -26,11 +26,6 @@ public class User implements UserDetails {
     @Column(name = "email", nullable = false)
     private String email;
 
-    public enum Role {
-        ADMIN,
-        VETERINARIAN,
-        ZOOKEEPER
-    }
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private Role role;
@@ -38,14 +33,17 @@ public class User implements UserDetails {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    public User(){
 
-    }
-    public User(String username, String password, String email, Role role) {
+    public User(String username, String password, String email, Role role, LocalDateTime createdAt) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
+        this.createdAt = createdAt;
+    }
+
+    public User() {
+
     }
 
     public int getId() {
