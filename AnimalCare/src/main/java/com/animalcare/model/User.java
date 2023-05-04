@@ -33,7 +33,6 @@ public class User implements UserDetails {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-
     public User(String username, String password, String email, Role role, LocalDateTime createdAt) {
         this.username = username;
         this.password = password;
@@ -102,7 +101,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return false;
     }
 
     @Override

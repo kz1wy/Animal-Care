@@ -19,6 +19,11 @@ public class UserController {
     }
 
     @GetMapping("")
+    public String showDashBoard(Model model) {
+        model.addAttribute("message", "Welcome to Animal Care!");
+        return "admin/index";
+    }
+    @GetMapping("/users")
     public String getAllUsers(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {

@@ -1,8 +1,11 @@
 package com.animalcare.service;
 
 import com.animalcare.model.User;
+import com.animalcare.registration.token.ConfirmationToken;
+import com.animalcare.registration.token.ConfirmationTokenService;
 import com.animalcare.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,15 +14,14 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
+@AllArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private final ConfirmationTokenService confirmationTokenService;
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -85,6 +87,17 @@ public class UserService {
 
         userRepository.save(user);
         // TODO: Send confirmation token
-        return "OK";
+        String token = UUID.randomUUID().toString();
+        ConfirmationToken confirmationToken = new ConfirmationToken(
+                token,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(5),
+                user
+        );
+
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+
+        //TODO: Send email
+        return token;
     }
 }
