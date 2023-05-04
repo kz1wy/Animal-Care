@@ -16,6 +16,4 @@ public class RegistrationRequest {
     private String email;
     private Role role;
 
-    private LocalDateTime createdAt;
-
 }

@@ -46,4 +46,8 @@ public class ConfirmationToken {
         this.expiredAt = expiredAt;
         this.user = user;
     }
+
+    public void setConfirmedAt(LocalDateTime confirmAt) {
+        this.confirmAt = confirmAt;
+    }
 }

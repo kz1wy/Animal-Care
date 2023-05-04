@@ -100,4 +100,12 @@ public class UserService {
         //TODO: Send email
         return token;
     }
+
+    public void enableUser(String username) {
+        User user = userRepository.findUserByUsername(username);
+        if (user == null)
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        else
+            user.setEnabled(true);
+    }
 }

@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+
 @Service
 @AllArgsConstructor
 public class RegistrationService {
@@ -30,15 +32,35 @@ public class RegistrationService {
                         request.getPassword(),
                         request.getEmail(),
                         request.getRole(),
-                        request.getCreatedAt()
+                        LocalDateTime.now(),
+                        false,
+                        false
                 )
         );
     }
 
-//    @Transactional
-//    public String confirmToken(String token){
-//        ConfirmationToken confirmationToken = confirmationTokenService
-//                .getToken(token)
-//                .orElset
-//    }
+    @Transactional
+    public String confirmToken(String token){
+        ConfirmationToken confirmationToken = confirmationTokenService
+                .getToken(token)
+                .orElseThrow(() ->
+                        new IllegalStateException("token not found"));
+
+        if (confirmationToken.getConfirmAt() != null){
+            throw new IllegalStateException("Email is already confirmed");
+        }
+
+        LocalDateTime expiredAt = confirmationToken.getExpiredAt();
+        if (expiredAt.isBefore(LocalDateTime.now())){
+            throw new IllegalStateException("token expired");
+        }
+
+        confirmationTokenService.setConfirmedAt(token);
+        userService.enableUser(
+            confirmationToken.getUser().getUsername()
+        );
+
+        return "confirmed";
+
+    }
 }

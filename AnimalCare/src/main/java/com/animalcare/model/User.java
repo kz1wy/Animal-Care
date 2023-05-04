@@ -33,13 +33,22 @@ public class User implements UserDetails {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    public User(String username, String password, String email, Role role, LocalDateTime createdAt) {
+    @Column(name = "locked")
+    private Boolean locked;
+
+    @Column(name = "enabled")
+    private Boolean enabled;
+
+    public User(String username, String password, String email, Role role, LocalDateTime createdAt, Boolean locked, Boolean enabled) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
         this.createdAt = createdAt;
+        this.locked = locked;
+        this.enabled = enabled;
     }
+
 
     public User() {
 
@@ -117,5 +126,9 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
