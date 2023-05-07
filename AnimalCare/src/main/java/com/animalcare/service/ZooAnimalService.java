@@ -54,4 +54,5 @@ public class ZooAnimalService {
     public void delete(int id) {
         zooAnimalRepository.deleteById(id);
     }
+
 }

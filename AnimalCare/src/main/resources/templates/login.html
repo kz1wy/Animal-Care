@@ -86,11 +86,11 @@
             document.cookie = `token=${data}; path=/;`
             const decodedToken = JSON.parse(atob(data.split('.')[1])); // Parse JWT token to extract user's role
             console.log(decodedToken.role);
-            if (decodedToken.role == 'ADMIN') { // Check user's role
-                window.location.href = "/admin";
-            } else {
-                window.location.href = "/user";
-            }
+            // if (decodedToken.role == 'ADMIN') { // Check user's role
+            //     window.location.href = "/admin";
+            // } else {
+            //     window.location.href = "/user";
+            // }
         }).catch(err=>{
             console.log(err);
             // Display error message in case of incorrect login credentials

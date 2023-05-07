@@ -1,12 +1,14 @@
 package com.animalcare.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "zoo_animals")
+@AllArgsConstructor
 public class ZooAnimal {
 
     @Id
@@ -15,6 +17,10 @@ public class ZooAnimal {
 
     @Column(name = "species", nullable = false)
     private String species;
+
+    public ZooAnimal() {
+
+    }
 
     public enum Sex {
         Male,
@@ -52,20 +58,6 @@ public class ZooAnimal {
 
     // Constructor, getters and setters
 
-
-    public ZooAnimal(int id, String species, Sex sex, LocalDate dateOfBirth, int age, float weight, LocalDate dateOfArrival, LocalDate dateOfDeparture, String causeOfDeparture, int exhibitId, LocalDateTime createdAt) {
-        this.id = id;
-        this.species = species;
-        this.sex = sex;
-        this.dateOfBirth = dateOfBirth;
-        this.age = age;
-        this.weight = weight;
-        this.dateOfArrival = dateOfArrival;
-        this.dateOfDeparture = dateOfDeparture;
-        this.causeOfDeparture = causeOfDeparture;
-        this.exhibitId = exhibitId;
-        this.createdAt = createdAt;
-    }
 
     public int getId() {
         return id;

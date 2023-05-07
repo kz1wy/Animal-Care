@@ -41,4 +41,8 @@ public class HealthRecord {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
