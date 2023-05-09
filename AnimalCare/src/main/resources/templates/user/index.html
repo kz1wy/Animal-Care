@@ -15,7 +15,7 @@
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user.css}" />
     <script src = "https://code.highcharts.com"> </script>
-    <title>Nhân viên</title>
+    <title>Users</title>
 </head>
 <body>
 <section class="sidebar">
@@ -86,8 +86,8 @@
                     <div class="db-box2">
                         <div class="db-box-content">
                             <!-- lấy từ database xuống -->
-                            <h4>Tổng số </h4>
-                            <p th:text="${count1} + ' cá thể'"></p>
+                            <h4>Total </h4>
+                            <p th:text="${count1} + ' individuals'"></p>
                         </div>
                     </div>
                 </div>
@@ -102,8 +102,8 @@
                     <div class="db-box2">
                         <div class="db-box-content">
                             <!-- lấy từ database xuống -->
-                            <h4>Số loài</h4>
-                            <p th:text="${count2} + ' loài'"></p>
+                            <h4>Species</h4>
+                            <p th:text="${count2} + ' species'"></p>
                         </div>
                     </div>
                 </div>
@@ -118,8 +118,8 @@
                     <div class="db-box2">
                         <div class="db-box-content">
                             <!-- lấy từ database xuống -->
-                            <h4>Số chuồng</h4>
-                            <p th:text="${count3} + ' chuồng'"></p>
+                            <h4>Exhibits</h4>
+                            <p th:text="${count3} + ' exhibits'"></p>
                         </div>
                     </div>
                 </div>
@@ -212,11 +212,8 @@
         </div>
         <div class="newInfo">
             <div class="newStaff">
-
                 <div class="card-header d-block d-sm-flex border-0">
-
                     <h4 class="card-title mb-2">Zoo Animal</h4>
-
                 </div>
                 <div class="card-body tab-content p-0">
                     <div class="tab-pane active show fade" >
@@ -239,12 +236,45 @@
                                 </tr>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
-
             </div>
+<!--            <div class="newInfo">-->
+<!--                <div class="newStaff">-->
+<!--                    <div class="card-header d-block d-sm-flex border-0">-->
+<!--                        <h4 class="card-title mb-2">Feeding Schedules</h4>-->
+<!--                    </div>-->
+<!--                    <div class="card-body tab-content p-0">-->
+<!--                        <div class="tab-pane active show fade" >-->
+<!--                            <div class="table-responsive">-->
+<!--                                <table class="table table-responsive-md card-table">-->
+<!--                                    <tbody>-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th>ID</th>-->
+<!--                                        <th>Animal ID</th>-->
+<!--                                        <th>Enclosure ID</th>-->
+<!--                                        <th>Feeding Time</th>-->
+<!--                                        <th>Feeding Notes</th>-->
+<!--                                        <th>Create At</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tr th:each="feedS: ${feedSList}">-->
+<!--                                        <td th:text="${feedS.id}" />-->
+<!--                                        <td th:text="${feedS.animal.id}" />-->
+<!--                                        <td th:text="${feedS.enclosure.id}" />-->
+<!--                                        <td th:text="${feedS.feedingTime}" />-->
+<!--                                        <td th:text="${feedS.createdAt}" />-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
 
     </div>

@@ -27,6 +27,7 @@ public class HomeController {
     private final EnclosureService enclosureService;
     private final MedicalRecordService medicalRecordService;
     private final HealthRecordService healthRecordService;
+    private final FeedingScheduleService feedingScheduleService;
 
     @GetMapping("/")
     public String showHomePage(Model model) {
@@ -80,6 +81,10 @@ public class HomeController {
 
             //animal
             model.addAttribute("animalList", animalList);
+
+            //feeding
+            List<FeedingSchedule> feedSList = feedingScheduleService.findAllFeedingSchedules();
+            model.addAttribute("feedSList", feedSList);
             return "user/index";
         } else {
             return "redirect:/index";

@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user.css}" />
-    <title>Hồ sơ sức khỏe</title>
+    <title>Create Medical Record</title>
 </head>
 <body>
 <section class="sidebar">
@@ -74,7 +74,7 @@
     <div class="dashboard">
         <div class="welcome-staff row">
             <div class="welcome-title col-md-6">
-                <h2>Thêm hồ sơ sức khỏe</h2>
+                <h2>Add Medical Record</h2>
             </div>
         </div>
         <br>
@@ -86,13 +86,13 @@
                             <p><img id="animalPic" width="200" style="vertical-align: middle;" class="center"/></p>
                             <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
                         </div>
-                        <p style="text-align: center;"><label for="file" style="cursor: pointer;">Tải hình</label></p>
+                        <p style="text-align: center;"><label for="file" style="cursor: pointer;">Upload</label></p>
                     </div>
                 </div>
                 <div class="form-outline mb-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="animalID">ID động vật</label>
+                            <label for="animalID">Animal ID</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="search" id="animalID" name="animal_id" class="form-control form-control" />
@@ -102,7 +102,7 @@
                 <div class="form-outline mb-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="docName">Bác sĩ</label>
+                            <label for="docName">Veterinarian</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="text" id="docName" name="veterinarian_name" class="form-control form-control"/>
@@ -112,7 +112,7 @@
                 <div class="form-outline mb-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="dateCheck">Ngày kiểm tra</label>
+                            <label for="dateCheck">Date of Visit</label>
                         </div>
                         <div class="col-lg-6">
                             <input type="date" id="dateCheck" name="dateCheck" class="form-control form-control"/>
@@ -122,7 +122,7 @@
                 <div class="form-outline mb-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="animalDia">Chẩn đoán</label>
+                            <label for="animalDia">Diagnosis</label>
                         </div>
                         <div class="col-lg-6">
                             <textarea id="animalDia" name="diagnosis" class="form-control form-control" value="" th:field="*{diagnosis}"></textarea>
@@ -132,7 +132,7 @@
                 <div class="form-outline mb-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="animalPre">Chỉ định</label>
+                            <label for="animalPre">Prescription</label>
                         </div>
                         <div class="col-lg-6">
                             <textarea id="animalPre" name="animalPre" class="form-control form-control" value=""></textarea>
@@ -142,7 +142,7 @@
                 <div class="form-outline mb-4">
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="animalNote">Ghi chú</label>
+                            <label for="animalNote">Notes</label>
                         </div>
                         <div class="col-lg-6">
                             <textarea id="animalNote" name="animalNote" class="form-control form-control" value=""></textarea>
@@ -152,7 +152,7 @@
                 <div class="db-card col-lg-12 col-12">
                     <div class="btn-right">
                         <button type="button"
-                                class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Tạo</button>
+                                class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Add</button>
                     </div>
                 </div>
             </form>

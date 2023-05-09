@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
     rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user.css}" />
-    <title>Hồ sơ động vật</title>
+    <title>Create Animal Profile</title>
 </head>
 <body>
 <section class="sidebar">
@@ -76,104 +76,71 @@
       <div class="dashboard">
           <div class="welcome-staff row">
       <div class="welcome-title col-md-6">
-        <h2>Thêm động vật</h2>
+        <h2>Add Animal</h2>
       </div>
     </div>
           <br>
           <div class="show-form m-auto">
-            <form method="post" th:action="@{/zoo-animals/add}" th:object="${zooAnimal}" class="mx-4">
-<!--              <div class="form-outline mb-4">-->
-<!--                  <div class="row">-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <label name="ltype" for="animalType">Loại động vật</label>-->
-<!--                      </div>-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <select name="dropSelect" class="form-control form-control" id="animalType" name="animalType">-->
-<!--                              <option value="" disabled selected hidden>Chọn loại động vật</option>-->
-<!--                              &lt;!&ndash; Load từ database &ndash;&gt;-->
-<!--                              <option value="Hổ">Hổ</option>-->
-<!--                              <option value="">Hổ</option>-->
-<!--                           </select>-->
-<!--                      </div>-->
-<!--                  </div> -->
-<!--              </div>-->
-<!--              <div class="form-outline mb-4">-->
-<!--                  <div class="row">-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <label name="ltype" for="animalGender">Giới tính</label>-->
-<!--                      </div>-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <select name="dropSelect" class="form-control form-control" id="animalGender" name="animalGender">-->
-<!--                              <option value="" disabled selected hidden>Chọn giới tính</option>-->
-<!--                              <option value="Đực">Đực</option>-->
-<!--                              <option value="Đực">Cái</option>-->
-<!--                              <option value="Chưa xác định">Chưa xác định</option>-->
-<!--                           </select>-->
-<!--                      </div>-->
-<!--                  </div> -->
-<!--              </div>-->
-<!--              <div class="form-outline mb-4">-->
-<!--                  <div class="row">-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <label name="dob" for="animalDOB">Ngày sinh</label>-->
-<!--                      </div>-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <input type="date" id="animalDOB" name="animalDOB" class="form-control form-control"/>-->
-<!--                      </div>-->
-<!--                  </div>-->
-<!--              </div>-->
-<!--              <div class="form-outline mb-4">-->
-<!--                  <div class="row">-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <label name="lage" for="animalAge">Tuổi</label>-->
-<!--                      </div>-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <input type="text" id="animalAge" name="animalAge" class="form-control form-control" value="" disabled/>-->
-<!--                      </div>-->
-<!--                  </div>-->
-<!--              </div>-->
-<!--              <div class="form-outline mb-4">-->
-<!--                  <div class="row">-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <label >Cân nặng</label>-->
-<!--                      </div>-->
-<!--                      <div class="col-lg-4 col-4">-->
-<!--                          <input type="number" id="animalWeight" name="animalWeight" class="form-control form-control"/>-->
-<!--                      </div>-->
-<!--                      <div class="col-lg-2 col-4">-->
-<!--                          <select name="dropSelect" class="form-control form-control">-->
-<!--                              <option value="kg">kg</option>-->
-<!--                              <option value="g">g</option>-->
-<!--                           </select>-->
-<!--                      </div>-->
-<!--                  </div>-->
-<!--              </div>-->
-<!--              <div class="form-outline mb-4">-->
-<!--                  <div class="row">-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <label name="arrive" for="dateArrive">Ngày nhận chăm sóc</label>-->
-<!--                      </div>-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <input type="date" id="dateArrive" name="dateArrive" class="form-control form-control"/>-->
-<!--                      </div>-->
-<!--                  </div>-->
-<!--              </div>-->
-<!--              <div class="form-outline mb-4">-->
-<!--                  <div class="row">-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <label name="lExhi" for="animalExhi">Chuồng</label>-->
-<!--                      </div>-->
-<!--                      <div class="col-lg-6">-->
-<!--                          <input type="text" id="animalExhi" name="animalExhi" class="form-control form-control" value=""/>-->
-<!--                      </div>-->
-<!--                  </div> -->
-<!--              </div>-->
-<!--              <div class="db-card col-lg-12 col-12">-->
-<!--                  <div class="btn-right">-->
-<!--                      <button type="button"-->
-<!--                        class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Tạo</button>-->
-<!--                  </div>-->
-<!--              </div>-->
+            <form method="POST" th:action="@{/zoo-animals/add}" th:object="${zooAnimal}" class="mx-4">
+                <div class="form-group">
+                    <label class="control-label" for="species">Species:</label>
+                    <input type="text" class="form-control" name="species" id="species"th:field="*{species}" >
+                    <div class="thongbao" id="txtSpecies"></div>
+                </div>
+                <label class="control-label">Sex:</label>
+                <div class="form-group">
+                    <input type="radio" name="sex" id="sexMale" th:field="*{Sex}" th:value="Male">
+                    <label for="sexFemale">Male</label>
+
+                    <input type="radio" name="sex" id="sexFemale" th:field="*{Sex}" th:value="Female">
+                    <label for="sexFemale">Female</label>
+
+                    <input type="radio" name="sex" id="sexUnknown" th:field="*{Sex}" th:value="Unknown">
+                    <label for="sexUnknown">Unknown</label>
+                    <div class="thongbao" id="txtSex"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="dob">DOB:</label>
+                    <input type="date" class="form-control" name="dob" id="dob"th:field="*{dateOfBirth}" >
+                    <div class="thongbao" id="txtDOB"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="age">Age:</label>
+                    <input type="text" class="form-control" name="age" id="age"th:field="*{age}" >
+                    <div class="thongbao" id="txtAge"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="weight">Weight:</label>
+                    <input type="text" class="form-control" name="weight" id="weight"th:field="*{weight}" >
+                    <div class="thongbao" id="txtWeight"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="arrive">Date of Arrival:</label>
+                    <input type="date" class="form-control" name="arrive" id="arrive"th:field="*{dateOfArrival}" >
+                    <div class="thongbao" id="txtDateArrive"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="exID">Exhibit ID:</label>
+                    <input type="text" class="form-control" name="exID" id="exID"th:field="*{exhibitId}" >
+                    <div class="thongbao" id="txtExID"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="dateDe">Date of Departure:</label>
+                    <input type="date" class="form-control" name="dateDe" id="dateDe"th:field="*{dateOfDeparture}" >
+                    <div class="thongbao" id="txtDateDe"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="causeDe">Cause of Departure:</label>
+                    <input type="text" class="form-control" name="causeDe" id="causeDe"th:field="*{causeOfDeparture}" >
+                    <div class="thongbao" id="txtCauseDe"></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="exID">Created Time:</label>
+                    <input type="date" class="form-control" name="createdTime" id="createdTime"th:field="*{createdAt}" >
+                    <div class="thongbao" id="txtCreatedTime"></div>
+                </div>
+
+                <button type="submit" id="btnAddAnimal" name="addAnimal" class="btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-25 mx-auto"><i class="fa fa-plus"></i> Add</button>
             </form>
           </div>
       </div>
