@@ -22,7 +22,7 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> getAllUsers(Model model) {
-             return userService.getAllUsers();
+        return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
@@ -30,7 +30,7 @@ public class UserController {
         return userService.getUserById(id);
 
     }
-    @PostMapping(value = "/add-user")
+    @PostMapping("/add-user")
     public User createUser(@ModelAttribute User user) {
         return userService.createUser(user);
     }

@@ -6,7 +6,9 @@ import com.animalcare.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -15,8 +17,9 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class RegistrationController {
     private final RegistrationService registrationService;
-    @PostMapping
-    public String register(@RequestBody RegistrationRequest request){
+
+    @PostMapping()
+    public String register(@ModelAttribute RegistrationRequest request){
         return registrationService.register(request);
     }
 
