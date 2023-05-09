@@ -1,5 +1,6 @@
 package com.animalcare.controller;
 
+import com.animalcare.dto.RegistrationRequest;
 import com.animalcare.model.*;
 import com.animalcare.service.*;
 import jakarta.servlet.http.Cookie;
@@ -49,7 +50,8 @@ public class HomeController {
     }
 
     @GetMapping("/register")
-    public String showRegisterPage() {
+    public String showRegisterPage(Model model) {
+        model.addAttribute("registrationRequest", new RegistrationRequest());
         return "register";
     }
 

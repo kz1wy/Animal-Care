@@ -6,7 +6,9 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode
 @ToString
 public class RegistrationRequest {

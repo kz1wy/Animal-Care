@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.function.Predicate;
 @Service
 public class EmailValidator implements Predicate<String> {
-    private static final String EMAIL_REGEX = "^[\\w-_.+]*[\\w-_.]@[\\w]+[\\w-.]+[\\w-]$";
+    private static final String EMAIL_REGEX = "^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}.[a-z]{2,}$";;
 
     @Override
     public boolean test(String email) {
