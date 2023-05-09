@@ -85,8 +85,8 @@ public class HomeController {
             model.addAttribute("animalList", animalList);
 
             //feeding
-            List<FeedingSchedule> feedSList = feedingScheduleService.findAllFeedingSchedules();
-            model.addAttribute("feedSList", feedSList);
+            List<FeedingSchedule> feedingScheduleList=feedingScheduleService.findAllFeedingSchedules();
+            model.addAttribute("feedingScheduleList",feedingScheduleList);
             return "user/index";
         } else {
             return "redirect:/index";

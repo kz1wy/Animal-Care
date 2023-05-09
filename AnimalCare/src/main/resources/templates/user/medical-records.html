@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user.css}" />
-    <title>Medical Records</title>
+    <title>Hồ sơ sức khỏe</title>
 </head>
 <body>
 <section class="sidebar">
@@ -74,14 +74,14 @@
     <section class="dashboard">
         <div class="welcome-staff row">
             <div class="welcome-title col-md-6">
-                <h2>List of Medical Records</h2>
+                <h2>Danh sách hồ sơ sức khỏe</h2>
             </div>
         </div>
         <div class="main-body py-4">
             <div class="row mb-3">
                 <div class="col">
                     <div class="input-group w-50">
-                        <input type="search" class="form-control" placeholder="Enter animal ID" id="searchAnimal">
+                        <input type="search" class="form-control" placeholder="Nhập tên/ID" id="searchAnimal">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="btnSearchUser"><i class="fa fa-search"></i></span>
                         </div>
@@ -127,7 +127,7 @@
                                 <p><img id="animalPic" width="200" style="vertical-align: middle;" class="center"/></p>
                                 <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
                             </div>
-                            <p style="text-align: center;"><label for="file" style="cursor: pointer;">Upload</label></p>
+                            <p style="text-align: center;"><label for="file" style="cursor: pointer;">Tải hình</label></p>
                         </div>
                     </div>
                     <div class="form-outline mb-4">
@@ -143,7 +143,7 @@
                     <div class="form-outline mb-4">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="animalID">Animal ID</label>
+                                <label for="animalID">Animal ID </label>
                             </div>
                             <div class="col-lg-6">
                                 <input type="text" id="animalID" name="animalID" class="form-control form-control" th:value="${health.animal.species}" disabled/>
@@ -153,7 +153,7 @@
                     <div class="form-outline mb-4">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="docName">Veterinarian</label>
+                                <label for="docName">Veterinarian Name</label>
                             </div>
                             <div class="col-lg-6">
                                 <input type="text" id="docName" name="docName" class="form-control form-control" th:value="${health.veterinarianName}"/>
@@ -163,7 +163,7 @@
                     <div class="form-outline mb-4">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label for="dateCheck">Date of Visit</label>
+                                <label for="dateCheck">Date of visit</label>
                             </div>
                             <div class="col-lg-6">
                                 <input type="date" id="dateCheck" name="dateCheck" class="form-control form-control" th:value="${health.dateOfVisit}"/>
@@ -203,7 +203,7 @@
                     <div class="db-card col-lg-12 col-12">
                         <div class="btn-right">
                             <button type="button"
-                                    class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Update</button>
+                                    class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Cập nhật</button>
                         </div>
                     </div>
                 </form>

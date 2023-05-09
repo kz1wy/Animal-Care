@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user.css}" />
-    <title>Create Medical Record</title>
+    <title>Hồ sơ sức khỏe</title>
 </head>
 <body>
 <section class="sidebar">
@@ -74,89 +74,148 @@
     <div class="dashboard">
         <div class="welcome-staff row">
             <div class="welcome-title col-md-6">
-                <h2>Add Medical Record</h2>
+                <h2>Thêm hồ sơ sức khỏe</h2>
             </div>
         </div>
         <br>
-        <div class="show-form m-auto">
-            <form th:action="@{/medical-records/create}" th:object="${medicalRecord}" class="mx-4">
-                <div class="form-outline mb-4">
-                    <div class="db-card col-lg-12 col-12">
-                        <div class="d-flex justify-content-center">
-                            <p><img id="animalPic" width="200" style="vertical-align: middle;" class="center"/></p>
-                            <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+        <div class="newInfo">
+            <div class="newStaff">
+
+                <div class="card-header d-block d-sm-flex border-0">
+
+                    <h4 class="card-title mb-2">Zoo Animal</h4>
+
+                </div>
+                <div class="card-body tab-content p-0">
+                    <div class="tab-pane active show fade" >
+                        <div class="table-responsive">
+                            <table class="table table-responsive-md card-table">
+                                <tbody>
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Species</th>
+                                    <th>Sex</th>
+                                    <th>Exhibit ID</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tr th:each="animal: ${zooAnimals}">
+                                    <td th:text="${animal.id}" />
+                                    <td th:text="${animal.species}" />
+                                    <td th:text="${animal.sex}" />
+                                    <td th:text="${animal.exhibitId}" />
+                                    <td>
+                                        <a class="editbtn" id="id"  data-toggle="modal" th:data-target="'#myModal'+${animal.id}">Create medical record </a>
+                                        &nbsp;&nbsp;&nbsp;
+
+                                        <div th:fragment="myModalFragment">
+                                            <div class="modal fade" th:id="'myModal' + ${animal.id}" >
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <header class="head-form px-3">
+                                                            <h3 id="header-title">Create Medical Record</h3>
+                                                        </header>
+                                                        <!-- Modal body -->
+                                                        <form th:action="@{/medical-records/create}" th:object="${medicalRecord}" class="mx-4" method="post">
+                                                            <div class="modal-body">
+
+                                                                <div class="form-outline mb-4"  >
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6">
+                                                                            <label for="animalID">Animal ID</label>
+                                                                        </div>
+                                                                        <div class="col-lg-6" >
+                                                                            <input type="text" id="animalID" name="animal_id" class="form-control form-control" th:field="*{animal.id}" th:value="${animal.id}" />
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-outline mb-4">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6">
+                                                                            <label for="docName">Veterinarian name</label>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <input type="text" id="docName" name="veterinarian_name" class="form-control form-control" th:field="*{veterinarianName}"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-outline mb-4">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6">
+                                                                            <label for="dateCheck">Date of visit</label>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <input type="date" id="dateCheck" name="date_of_visit" class="form-control form-control" th:field="*{dateOfVisit}"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-outline mb-4">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6">
+                                                                            <label for="animalDia">Diagnosis</label>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <textarea id="animalDia" name="diagnosis" class="form-control form-control" value="" th:field="*{diagnosis}"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-outline mb-4">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6">
+                                                                            <label for="animalPre">Prescription</label>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <textarea id="animalPre" name="prescription" class="form-control form-control" value="" th:field="*{prescription}"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-outline mb-4">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-6">
+                                                                            <label for="animalNote">Notes</label>
+                                                                        </div>
+                                                                        <div class="col-lg-6">
+                                                                            <textarea id="animalNote" name="notes" class="form-control form-control" value="" th:field="*{notes}"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- Modal footer -->
+                                                            <div class="modal-footer" id="modal-footer">
+                                                                <div class="btn-right">
+                                                                    <button type="submit"
+                                                                            class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Create</button>
+                                                                </div>
+                                                                <div class="btn-right">
+                                                                    <button  class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100" type="button" data-dismiss="modal">Close</button>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
                         </div>
-                        <p style="text-align: center;"><label for="file" style="cursor: pointer;">Upload</label></p>
                     </div>
                 </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="animalID">Animal ID</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="search" id="animalID" name="animal_id" class="form-control form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="docName">Veterinarian</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="text" id="docName" name="veterinarian_name" class="form-control form-control"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="dateCheck">Date of Visit</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="date" id="dateCheck" name="dateCheck" class="form-control form-control"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="animalDia">Diagnosis</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <textarea id="animalDia" name="diagnosis" class="form-control form-control" value="" th:field="*{diagnosis}"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="animalPre">Prescription</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <textarea id="animalPre" name="animalPre" class="form-control form-control" value=""></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label for="animalNote">Notes</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <textarea id="animalNote" name="animalNote" class="form-control form-control" value=""></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="db-card col-lg-12 col-12">
-                    <div class="btn-right">
-                        <button type="button"
-                                class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Add</button>
-                    </div>
-                </div>
-            </form>
+
+            </div>
         </div>
+
+    </div>
+
     </div>
 </section>
 

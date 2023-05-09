@@ -3,6 +3,7 @@ package com.animalcare.controller;
 import com.animalcare.model.MedicalRecord;
 import com.animalcare.model.ZooAnimal;
 import com.animalcare.service.MedicalRecordService;
+import com.animalcare.service.ZooAnimalService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,11 @@ import java.util.List;
 public class MedicalRecordController {
 
     private final MedicalRecordService medicalRecordService;
+    private  final ZooAnimalService zooAnimalService;
 
-    public MedicalRecordController(MedicalRecordService medicalRecordService) {
+    public MedicalRecordController(MedicalRecordService medicalRecordService, ZooAnimalService zooAnimalService) {
         this.medicalRecordService = medicalRecordService;
+        this.zooAnimalService = zooAnimalService;
     }
 
     @GetMapping("")
@@ -46,15 +49,22 @@ public class MedicalRecordController {
     public String showCreateMedicalRecordForm(Model model) {
         MedicalRecord medicalRecord = new MedicalRecord();
         model.addAttribute("medicalRecord", medicalRecord);
+        List<ZooAnimal> zooAnimals = zooAnimalService.findAll();
+        model.addAttribute("zooAnimals", zooAnimals);
         return "user/create-medical-record";
     }
 
-    @PostMapping("/create")
-    public String createMedicalRecord(@ModelAttribute("medicalRecord") MedicalRecord medicalRecord) {
+    //@PostMapping("/create")
+    //public String createMedicalRecord(@ModelAttribute("medicalRecord") MedicalRecord medicalRecord) {
+    //    medicalRecordService.create(medicalRecord);
+    //    return "redirect:/user/medical-records";
+    //}
+    @PostMapping(value ="/create")
+    public String createUser(@ModelAttribute  MedicalRecord medicalRecord) {
         medicalRecordService.create(medicalRecord);
-        return "redirect:/user/medical-records";
-    }
+        return "redirect:/user";
 
+    }
     @GetMapping("/{id}/edit")
     public String showEditMedicalRecordForm(@PathVariable int id, Model model) {
         MedicalRecord medicalRecord = medicalRecordService.findById(id);
@@ -72,5 +82,10 @@ public class MedicalRecordController {
     public String deleteMedicalRecord(@PathVariable int id) {
         medicalRecordService.delete(id);
         return "redirect:/medical-records";
+    }
+    @RequestMapping("/delete/{id}")
+    public String deleteAnimal(int id) {
+        zooAnimalService.delete(id);
+        return "redirect:/";
     }
 }

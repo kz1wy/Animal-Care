@@ -62,10 +62,10 @@ var barChartOptions = {
 
   var areaChartOptions = {
     series: [{
-      name: 'ill',
+      name: 'Carnivores',
       data: [100, 180, 160, 220, 210, 109, 100]
     }, {
-      name: 'cured',
+      name: 'Rerbivorous',
       data: [50, 40, 60, 0, 10, 111, 120]
     }],
     chart: {
