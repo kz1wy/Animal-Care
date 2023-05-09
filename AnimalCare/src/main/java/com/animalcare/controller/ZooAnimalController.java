@@ -25,7 +25,7 @@ public class ZooAnimalController {
     public String getAllZooAnimals(Model model) {
         List<ZooAnimal> zooAnimals = zooAnimalService.findAll();
         model.addAttribute("zooAnimals", zooAnimals);
-        return "zoo-animals/index";
+        return "user/animal-profiles";
     }
 
     @GetMapping("/{id}")
@@ -38,14 +38,14 @@ public class ZooAnimalController {
     @GetMapping("/add")
     public String showAddZooAnimalForm(Model model) {
         model.addAttribute("zooAnimal", new ZooAnimal());
-        return "zoo-animals/add";
+        return "user/create-animal-profile";
     }
 
     @PostMapping("/add")
     @PreAuthorize("hasAnyAuthority('ADMIN','VETERINARIAN')")
     public String addZooAnimal(@ModelAttribute ZooAnimal zooAnimal) {
         zooAnimalService.create(zooAnimal);
-        return "redirect:/zoo-animals";
+        return "redirect:/user/animal-profiles";
     }
 
     @GetMapping("/{id}/edit")

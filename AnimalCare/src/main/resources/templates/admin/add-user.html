@@ -24,11 +24,13 @@
     <ul class="menu">
         <div class="item admin">
             <a href="/admin">
+                <i class="material-icons title">dashboard</i>
                 <span>Dashboard</span>
             </a>
         </div>
         <div class="item admin">
-            <a href="/admin/add-user">
+            <a href="/admin/users/add">
+                <i class="fa-sharp fa-solid fa-plus"></i>
                 <span>Add user</span>
             </a>
         </div>
@@ -54,7 +56,7 @@
 			</div>
             <br>
             <div class="show-form m-auto">
-                <form class="add-form m-auto py-5" th:action="@{/admin/add-user}" th:object="${user}" method="POST" >
+                <form class="add-form m-auto py-5" th:action="@{/admin/users/add}" th:object="${user}" method="POST" >
                     <div class="form-group">
                         <label class="control-label" for="add-email">Email:</label>
                         <input type="email" class="form-control" name="email" id="add-email"th:field="*{email}" >
@@ -71,10 +73,6 @@
                         <div class="thongbao" id="txtpPassword"></div>
                     </div>
                     <div class="form-group">
-
-                        <input type="radio"  name="role" id="add-role-admin" th:field="*{role}" th:value="ADMIN">
-                        <label for="add-role-admin">Admin</label>
-
                         <input type="radio" name="role" id="add-role-vet" th:field="*{role}" th:value="VETERINARIAN">
                         <label for="add-role-vet">Veterinarian</label>
 

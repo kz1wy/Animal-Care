@@ -23,7 +23,7 @@ public class MedicalRecordController {
     public String showAllMedicalRecords(Model model) {
         List<MedicalRecord> medicalRecords = medicalRecordService.findAll();
         model.addAttribute("medicalRecords", medicalRecords);
-        return "medical_records/index";
+        return "user/medical-records";
     }
 
     @GetMapping("/{id}")
@@ -46,13 +46,13 @@ public class MedicalRecordController {
     public String showCreateMedicalRecordForm(Model model) {
         MedicalRecord medicalRecord = new MedicalRecord();
         model.addAttribute("medicalRecord", medicalRecord);
-        return "medical_records/create";
+        return "user/create-medical-record";
     }
 
     @PostMapping("/create")
     public String createMedicalRecord(@ModelAttribute("medicalRecord") MedicalRecord medicalRecord) {
         medicalRecordService.create(medicalRecord);
-        return "redirect:/medical-records";
+        return "redirect:/user/medical-records";
     }
 
     @GetMapping("/{id}/edit")

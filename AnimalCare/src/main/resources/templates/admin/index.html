@@ -25,16 +25,19 @@
     <ul class="menu">
         <div class="item admin">
             <a href="/admin">
+                <i class="material-icons title">dashboard</i>
                 <span>Dashboard</span>
             </a>
         </div>
         <div class="item admin">
-            <a href="/admin/add-user">
+            <a href="/admin/users/add">
+                <i class="fa-sharp fa-solid fa-plus"></i>
                 <span>Add user</span>
             </a>
         </div>
         <div class="item admin">
             <a href="/log-out">
+                <i class="bi bi-box-arrow-right"></i>
                 <span>Log out</span>
             </a>
         </div>
@@ -73,12 +76,11 @@
                         <div th:each="user: ${listUser}" class='staff-card col-lg-4 col-6'>
                             <div class='item'>
                                 <div class='item-img'>
-                                    <img  src="" alt=''>
+                                    <img th:src="@{/img/avatar.jpg}" alt=''>
                                 </div>
                                 <div class='item-info'>
                                     <h5 th:text="${user.username}"></h5>
-                                    <p>Lorem</p>
-                                    <p>Lorem</p>
+                                    <p th:text="${user.role}">Lorem</p>
 <!--                                    th:attr="data-target='#myModal+*{user.id}"-->
                                     <a class='editbtn' id="id"  data-toggle="modal" th:data-target="'#myModal'+${user.username}">Detail</a>
                                     <div th:fragment="myModalFragment">
@@ -86,16 +88,11 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <header class="head-form px-3">
-                                                        <h3 id="header-title">Thông tin nhân viên</h3>
+                                                        <h3 id="header-title">User's Information</h3>
                                                     </header>
                                                     <!-- Modal body -->
                                                     <div class="modal-body">
                                                         <form role="form" id="show-Info-Staff">
-                                                            <div class="row col-6">
-                                                                <div class="form-group">
-                                                                    <img name="avatar" id="user-avatar" src="" alt="user-avatar">
-                                                                </div>
-                                                            </div>
                                                             <div class="row">
                                                                 <div class="form-group px-2">
                                                                     <label class="control-label" for="i">ID:</label>
@@ -123,8 +120,8 @@
                                                     </div>
                                                     <!-- Modal footer -->
                                                     <div class="modal-footer" id="modal-footer">
-                                                        <button id="btnSaveStaff" type="submit" name="resetPW">Reset mật khẩu</button>
-                                                        <button id="btnClose" type="button" data-dismiss="modal">Đóng</button>
+                                                        <button id="btnSaveStaff" type="button" name="resetPW">Delete</button>
+                                                        <button id="btnClose" type="button" data-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>
                                             </div>

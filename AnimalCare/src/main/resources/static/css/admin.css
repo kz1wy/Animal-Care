@@ -241,7 +241,7 @@ body{
 #btnSave, #btnSaveStaff, #btnGiveTask, #btnSendLeave, #btnUncheckLeave, #btnCheckLeave, #btnUpdateStaff, #btnClose, #btnSavePW{
   border-radius: 6px;
   border: transparent;
-  padding: 5px 10px;
+  padding: 15px 10px;
   color: white;
   font-weight: 500;
   background-color: #526bda;

@@ -21,15 +21,8 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public String getAllUsers(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            List<User> listUser = userService.getAllUsers();
-            model.addAttribute("listUser",listUser);
-            return "admin/index";
-        } else {
-            return "redirect:/index";
-        }
+    public List<User> getAllUsers(Model model) {
+             return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
@@ -38,14 +31,8 @@ public class UserController {
 
     }
     @PostMapping(value = "/add-user")
-    public String createUser(@ModelAttribute User user) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            userService.createUser(user);
-            return "redirect:/admin";
-        } else {
-            return "redirect:/add-user";
-        }
+    public User createUser(@ModelAttribute User user) {
+        return userService.createUser(user);
     }
 
     @DeleteMapping("/{id}")

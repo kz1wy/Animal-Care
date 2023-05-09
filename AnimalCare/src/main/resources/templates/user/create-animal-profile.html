@@ -41,19 +41,19 @@
                 <i class="fas fa-angle-right arrow"></i>
             </a>
             <div class="sub-menu">
-                <a href="/user/animals" class="sub-item"> Show animal profiles</a>
-                <a href="/user/createanimal" class="sub-item">  Create animal profile</a>
+                <a href="/zoo-animals" class="sub-item"> Show animal profiles</a>
+                <a href="/zoo-animals/add" class="sub-item">  Create animal profile</a>
             </div>
         </div>
         <div class="item user">
             <a class="sub-btn">
                 <i class="bi bi-clipboard2-pulse"></i>
-                <span>Health record</span>
+                <span>Medical record</span>
                 <i class="fas fa-angle-right arrow"></i>
             </a>
             <div class="sub-menu">
-                <a href="/user/healths" class="sub-item"> Show health record</a>
-                <a href="/user/createhealth" class="sub-item"> Create health record</a>
+                <a href="/medical-records" class="sub-item"> Show medical records</a>
+                <a href="/medical-records/create" class="sub-item"> Create medical record</a>
             </div>
         </div>
         <div class="item user">
@@ -81,122 +81,103 @@
     </div>
           <br>
           <div class="show-form m-auto">
-            <form method="post" action="#">
-              <div class="form-outline mb-4">
-                  <div class="db-card col-lg-12 col-12">
-                      <div class="d-flex justify-content-center">
-                          <p><img id="animalPic" width="200" style="vertical-align: middle;" class="center"/></p>
-                          <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-                      </div>
-                      <p style="text-align: center;"><label for="file" style="cursor: pointer;">Tải hình</label></p>
-                  </div>
-              </div>
-            </form>
-              </div>
-              <div class="form-outline mb-4">
-                  <div class="row">
-                      <div class="col-lg-6">
-                          <label name="ltype" for="animalType">Loại động vật</label>
-                      </div>
-                      <div class="col-lg-6">
-                          <select name="dropSelect" class="form-control form-control" id="animalType" name="animalType">
-                              <option value="" disabled selected hidden>Chọn loại động vật</option>
-                              <!-- Load từ database -->
-                              <option value="Hổ">Hổ</option>
-                              <option value="">Hổ</option>
-                           </select>
-                      </div>
-                  </div> 
-              </div>
-              <div class="form-outline mb-4">
-                  <div class="row">
-                      <div class="col-lg-6">
-                          <label name="ltype" for="animalGender">Giới tính</label>
-                      </div>
-                      <div class="col-lg-6">
-                          <select name="dropSelect" class="form-control form-control" id="animalGender" name="animalGender">
-                              <option value="" disabled selected hidden>Chọn giới tính</option>
-                              <option value="Đực">Đực</option>
-                              <option value="Đực">Cái</option>
-                              <option value="Chưa xác định">Chưa xác định</option>
-                           </select>
-                      </div>
-                  </div> 
-              </div>
-              <div class="form-outline mb-4">
-                  <div class="row">
-                      <div class="col-lg-6">
-                          <label name="dob" for="animalDOB">Ngày sinh</label>
-                      </div>
-                      <div class="col-lg-6">
-                          <input type="date" id="animalDOB" name="animalDOB" class="form-control form-control"/>
-                      </div>
-                  </div>
-              </div>
-              <div class="form-outline mb-4">
-                  <div class="row">
-                      <div class="col-lg-6">
-                          <label name="lage" for="animalAge">Tuổi</label>
-                      </div>
-                      <div class="col-lg-6">
-                          <input type="text" id="animalAge" name="animalAge" class="form-control form-control" value="" disabled/>
-                      </div>
-                  </div>
-              </div>
-              <div class="form-outline mb-4">
-                  <div class="row">
-                      <div class="col-lg-6">
-                          <label >Cân nặng</label>
-                      </div>
-                      <div class="col-lg-4 col-4">
-                          <input type="number" id="animalWeight" name="animalWeight" class="form-control form-control"/>
-                      </div>
-                      <div class="col-lg-2 col-4">
-                          <select name="dropSelect" class="form-control form-control">
-                              <option value="kg">kg</option>
-                              <option value="g">g</option>
-                           </select>
-                      </div>
-                  </div>
-              </div>
-              <div class="form-outline mb-4">
-                  <div class="row">
-                      <div class="col-lg-6">
-                          <label name="arrive" for="dateArrive">Ngày nhận chăm sóc</label>
-                      </div>
-                      <div class="col-lg-6">
-                          <input type="date" id="dateArrive" name="dateArrive" class="form-control form-control"/>
-                      </div>
-                  </div>
-              </div>
-              <div class="form-outline mb-4">
-                  <div class="row">
-                      <div class="col-lg-6">
-                          <label name="lExhi" for="animalExhi">Chuồng</label>
-                      </div>
-                      <div class="col-lg-6">
-                          <input type="text" id="animalExhi" name="animalExhi" class="form-control form-control" value=""/>
-                      </div>
-                  </div> 
-              </div>
-              <div class="db-card col-lg-12 col-12">
-                  <div class="btn-right">
-                      <button type="button"
-                        class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Tạo</button>
-                  </div>
-              </div>
+            <form method="post" th:action="@{/zoo-animals/add}" th:object="${zooAnimal}" class="mx-4">
+<!--              <div class="form-outline mb-4">-->
+<!--                  <div class="row">-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <label name="ltype" for="animalType">Loại động vật</label>-->
+<!--                      </div>-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <select name="dropSelect" class="form-control form-control" id="animalType" name="animalType">-->
+<!--                              <option value="" disabled selected hidden>Chọn loại động vật</option>-->
+<!--                              &lt;!&ndash; Load từ database &ndash;&gt;-->
+<!--                              <option value="Hổ">Hổ</option>-->
+<!--                              <option value="">Hổ</option>-->
+<!--                           </select>-->
+<!--                      </div>-->
+<!--                  </div> -->
+<!--              </div>-->
+<!--              <div class="form-outline mb-4">-->
+<!--                  <div class="row">-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <label name="ltype" for="animalGender">Giới tính</label>-->
+<!--                      </div>-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <select name="dropSelect" class="form-control form-control" id="animalGender" name="animalGender">-->
+<!--                              <option value="" disabled selected hidden>Chọn giới tính</option>-->
+<!--                              <option value="Đực">Đực</option>-->
+<!--                              <option value="Đực">Cái</option>-->
+<!--                              <option value="Chưa xác định">Chưa xác định</option>-->
+<!--                           </select>-->
+<!--                      </div>-->
+<!--                  </div> -->
+<!--              </div>-->
+<!--              <div class="form-outline mb-4">-->
+<!--                  <div class="row">-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <label name="dob" for="animalDOB">Ngày sinh</label>-->
+<!--                      </div>-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <input type="date" id="animalDOB" name="animalDOB" class="form-control form-control"/>-->
+<!--                      </div>-->
+<!--                  </div>-->
+<!--              </div>-->
+<!--              <div class="form-outline mb-4">-->
+<!--                  <div class="row">-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <label name="lage" for="animalAge">Tuổi</label>-->
+<!--                      </div>-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <input type="text" id="animalAge" name="animalAge" class="form-control form-control" value="" disabled/>-->
+<!--                      </div>-->
+<!--                  </div>-->
+<!--              </div>-->
+<!--              <div class="form-outline mb-4">-->
+<!--                  <div class="row">-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <label >Cân nặng</label>-->
+<!--                      </div>-->
+<!--                      <div class="col-lg-4 col-4">-->
+<!--                          <input type="number" id="animalWeight" name="animalWeight" class="form-control form-control"/>-->
+<!--                      </div>-->
+<!--                      <div class="col-lg-2 col-4">-->
+<!--                          <select name="dropSelect" class="form-control form-control">-->
+<!--                              <option value="kg">kg</option>-->
+<!--                              <option value="g">g</option>-->
+<!--                           </select>-->
+<!--                      </div>-->
+<!--                  </div>-->
+<!--              </div>-->
+<!--              <div class="form-outline mb-4">-->
+<!--                  <div class="row">-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <label name="arrive" for="dateArrive">Ngày nhận chăm sóc</label>-->
+<!--                      </div>-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <input type="date" id="dateArrive" name="dateArrive" class="form-control form-control"/>-->
+<!--                      </div>-->
+<!--                  </div>-->
+<!--              </div>-->
+<!--              <div class="form-outline mb-4">-->
+<!--                  <div class="row">-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <label name="lExhi" for="animalExhi">Chuồng</label>-->
+<!--                      </div>-->
+<!--                      <div class="col-lg-6">-->
+<!--                          <input type="text" id="animalExhi" name="animalExhi" class="form-control form-control" value=""/>-->
+<!--                      </div>-->
+<!--                  </div> -->
+<!--              </div>-->
+<!--              <div class="db-card col-lg-12 col-12">-->
+<!--                  <div class="btn-right">-->
+<!--                      <button type="button"-->
+<!--                        class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Tạo</button>-->
+<!--                  </div>-->
+<!--              </div>-->
             </form>
           </div>
       </div>
   </section>
-           
- 
-<script>
-    var loadFile = function(event) {
-            var image = document.getElementById('animalPic');
-            image.src = URL.createObjectURL(event.target.files[0]);
-        };
-</script>
     <script th:src="@{/js/user.js}"></script>
 
 <!-- BS4 -->

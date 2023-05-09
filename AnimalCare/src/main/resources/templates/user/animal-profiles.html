@@ -41,19 +41,19 @@
                 <i class="fas fa-angle-right arrow"></i>
             </a>
             <div class="sub-menu">
-                <a href="/user/animals" class="sub-item"> Show animal profiles</a>
-                <a href="/user/createanimal" class="sub-item">  Create animal profile</a>
+                <a href="/zoo-animals" class="sub-item"> Show animal profiles</a>
+                <a href="/zoo-animals/add" class="sub-item">  Create animal profile</a>
             </div>
         </div>
         <div class="item user">
             <a class="sub-btn">
                 <i class="bi bi-clipboard2-pulse"></i>
-                <span>Health record</span>
+                <span>Medical record</span>
                 <i class="fas fa-angle-right arrow"></i>
             </a>
             <div class="sub-menu">
-                <a href="/user/healths" class="sub-item"> Show health record</a>
-                <a href="/user/createhealth" class="sub-item"> Create health record</a>
+                <a href="/medical-records" class="sub-item"> Show medical records</a>
+                <a href="/medical-records/create" class="sub-item"> Create medical record</a>
             </div>
         </div>
         <div class="item user">
@@ -95,12 +95,11 @@
                     <div th:each="animal: ${zooAnimals}" class='animal-card col-lg-4 col-12'>
                         <div class='item'>
                             <div class='item-img'>
-                                <img src='https://thuthuatnhanh.com/wp-content/uploads/2020/09/hinh-anh-dong-vat-de-thuong-cho-may-tinh.jpg' alt=''>
+                                <img th:src="@{/img/animal.png}" alt=''>
                             </div>
                             <div class='item-info'>
-                                <h5 th:text="${animal.id}"></h5>
                                 <p th:text="${animal.species}"></p>
-                                <p th:text="${animal.age}"></p>
+                                <p>Age: <span th:text="${animal.age}"></span></p>
                                 <div class="row">
                                     <div class="db-card col-lg-12 col-12">
                                         <div class="d-flex justify-content-center">
@@ -116,130 +115,118 @@
             </div>
         </div>
     </section>
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <form method="post" action="#">
-                <div class="form-outline mb-4">
-                    <div class="db-card col-lg-12 col-12">
-                        <div class="d-flex justify-content-center">
-                            <p><img id="animalPic" width="200" style="vertical-align: middle;" class="center"/></p>
-                            <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <p><img id="animalImg" width="200" style="vertical-align: middle;" class="center" src="https://thuthuatnhanh.com/wp-content/uploads/2020/09/hinh-anh-dong-vat-de-thuong-cho-may-tinh.jpg"/></p>
-                        </div>
-                        <p style="text-align: center;"><label for="file" style="cursor: pointer;">Tải hình</label></p>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label name="lid" for="animalID">ID</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="text" id="animalID" name="animalID" class="form-control form-control" value="" disabled/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label name="ltype" for="animalType">Loại động vật</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <select name="dropSelect" class="form-control form-control" id="animalType" name="animalType">
-                                <option value="" disabled selected hidden>Chọn loại động vật</option>
-                                <!-- Load từ database -->
-                                <option value="Hổ">Hổ</option>
-                                <option value="">Hổ</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label name="ltype" for="animalGender">Giới tính</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <select name="dropSelect" class="form-control form-control" id="animalGender" name="animalGender">
-                                <option value="" disabled selected hidden>Chọn giới tính</option>
-                                <option value="Đực">Đực</option>
-                                <option value="Đực">Cái</option>
-                                <option value="Chưa xác định">Chưa xác định</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label name="dob" for="animalDOB">Ngày sinh</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="date" id="animalDOB" name="animalDOB" class="form-control form-control"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label name="lage" for="animalAge">Tuổi</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="text" id="animalAge" name="animalAge" class="form-control form-control" value="" disabled/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label >Cân nặng</label>
-                        </div>
-                        <div class="col-lg-4 col-4">
-                            <input type="number" id="animalWeight" name="animalWeight" class="form-control form-control"/>
-                        </div>
-                        <div class="col-lg-2 col-4">
-                            <select name="dropSelect" class="form-control form-control">
-                                <option value="kg">kg</option>
-                                <option value="g">g</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label name="arrive" for="dateArrive">Ngày nhận chăm sóc</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="date" id="dateArrive" name="dateArrive" class="form-control form-control"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-outline mb-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label name="lExhi" for="animalExhi">Chuồng</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <input type="text" id="animalExhi" name="animalExhi" class="form-control form-control" value=""/>
-                        </div>
-                    </div>
-                </div>
-                <div class="db-card col-lg-12 col-12">
-                    <div class="btn-right">
-                        <button type="button"
-                                class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Cập nhật</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- End Modal-->
+<!--    &lt;!&ndash; The Modal &ndash;&gt;-->
+<!--    <div id="myModal" class="modal">-->
+<!--        &lt;!&ndash; Modal content &ndash;&gt;-->
+<!--        <div class="modal-content">-->
+<!--            <span class="close">&times;</span>-->
+<!--            <form method="post" action="#">-->
+<!--                <div class="form-outline mb-4">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <label name="lid" for="animalID">ID</label>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <input type="text" id="animalID" name="animalID" class="form-control form-control" value="" disabled/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-outline mb-4">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <label name="ltype" for="animalType">Loại động vật</label>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <select name="dropSelect" class="form-control form-control" id="animalType" name="animalType">-->
+<!--                                <option value="" disabled selected hidden>Chọn loại động vật</option>-->
+<!--                                &lt;!&ndash; Load từ database &ndash;&gt;-->
+<!--                                <option value="Hổ">Hổ</option>-->
+<!--                                <option value="">Hổ</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-outline mb-4">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <label name="ltype" for="animalGender">Giới tính</label>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <select name="dropSelect" class="form-control form-control" id="animalGender" name="animalGender">-->
+<!--                                <option value="" disabled selected hidden>Chọn giới tính</option>-->
+<!--                                <option value="Đực">Đực</option>-->
+<!--                                <option value="Đực">Cái</option>-->
+<!--                                <option value="Chưa xác định">Chưa xác định</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-outline mb-4">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <label name="dob" for="animalDOB">Ngày sinh</label>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <input type="date" id="animalDOB" name="animalDOB" class="form-control form-control"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-outline mb-4">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <label name="lage" for="animalAge">Tuổi</label>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <input type="text" id="animalAge" name="animalAge" class="form-control form-control" value="" disabled/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-outline mb-4">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <label >Cân nặng</label>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-4 col-4">-->
+<!--                            <input type="number" id="animalWeight" name="animalWeight" class="form-control form-control"/>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-2 col-4">-->
+<!--                            <select name="dropSelect" class="form-control form-control">-->
+<!--                                <option value="kg">kg</option>-->
+<!--                                <option value="g">g</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-outline mb-4">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <label name="arrive" for="dateArrive">Ngày nhận chăm sóc</label>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <input type="date" id="dateArrive" name="dateArrive" class="form-control form-control"/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="form-outline mb-4">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <label name="lExhi" for="animalExhi">Chuồng</label>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <input type="text" id="animalExhi" name="animalExhi" class="form-control form-control" value=""/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="db-card col-lg-12 col-12">-->
+<!--                    <div class="btn-right">-->
+<!--                        <button type="button"-->
+<!--                                class="register btn btn-success btn-block btn-lg gradient-custom-4 border-0 w-100">Cập nhật</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash; End Modal&ndash;&gt;-->
 </section>
 <script>
     // Get the modal
