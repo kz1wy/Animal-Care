@@ -1,6 +1,8 @@
 package com.animalcare.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +11,8 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -45,6 +49,15 @@ public class User implements UserDetails {
         this.email = email;
         this.role = role;
         this.createdAt = createdAt;
+        this.locked = locked;
+        this.enabled = enabled;
+    }
+
+    public User(String username, String password, String email, Role role, Boolean locked, Boolean enabled) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
         this.locked = locked;
         this.enabled = enabled;
     }
