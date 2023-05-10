@@ -15,7 +15,7 @@
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user.css}" />
     <script src = "https://code.highcharts.com"> </script>
-    <title>Nhân viên</title>
+    <title>Users</title>
 </head>
 <body>
 <section class="sidebar">
@@ -86,8 +86,8 @@
                     <div class="db-box2">
                         <div class="db-box-content">
                             <!-- lấy từ database xuống -->
-                            <h4>Tổng số </h4>
-                            <p th:text="${count1} + ' cá thể'"></p>
+                            <h4>Total </h4>
+                            <p th:text="${count1} + ' individuals'"></p>
                         </div>
                     </div>
                 </div>
@@ -102,8 +102,8 @@
                     <div class="db-box2">
                         <div class="db-box-content">
                             <!-- lấy từ database xuống -->
-                            <h4>Số loài</h4>
-                            <p th:text="${count2} + ' loài'"></p>
+                            <h4>Species</h4>
+                            <p th:text="${count2} + ' species'"></p>
                         </div>
                     </div>
                 </div>
@@ -118,8 +118,8 @@
                     <div class="db-box2">
                         <div class="db-box-content">
                             <!-- lấy từ database xuống -->
-                            <h4>Số chuồng</h4>
-                            <p th:text="${count3} + ' chuồng'"></p>
+                            <h4>Exhibits</h4>
+                            <p th:text="${count3} + ' exhibits'"></p>
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
         <div class="charts">
 
             <div class="charts-card">
-                <p class="chart-title">Feeding chedules </p>
+                <p class="chart-title">Feeding Schedules </p>
 
                 <div id="area-chart"></div>
             </div>

@@ -45,7 +45,7 @@ public class ZooAnimalController {
     @PreAuthorize("hasAnyAuthority('ADMIN','VETERINARIAN')")
     public String addZooAnimal(@ModelAttribute ZooAnimal zooAnimal) {
         zooAnimalService.create(zooAnimal);
-        return "redirect:/user/animal-profiles";
+        return "redirect:/zoo-animals";
     }
 
     @GetMapping("/{id}/edit")

@@ -116,7 +116,7 @@
                                                         </header>
                                                         <!-- Modal body -->
                                                         <div class="modal-body">
-                                                            <form role="form" id="show-Info-Staff" th:action="@{/zoo-animals/}">
+                                                            <form role="form" id="show-Info-Staff" >
                                                                 <div class="row justify-content-center">
                                                                     <div class='item-img'>
                                                                         <img th:src="@{/img/animal.png}" alt=''>
@@ -183,7 +183,8 @@
                                                         </div>
                                                         <!-- Modal footer -->
                                                         <div class="modal-footer" id="modal-footer">
-                                                                <button id="btnSaveStaff" type="submit" name="delAnimal">Delete</button>
+                                                            <button id="btnSaveStaff" type="submit" name="delAnimal" >Delete</button>
+<!--                                                         <a href="${pageContext.request.contextPath}/zoo-animals/{id}/delete(id=${animal.id})" title="Delete"><i class="fa fa-trash-o"></i>Delete</a>-->
                                                             <button id="btnClose" type="button" data-dismiss="modal">Close</button>
                                                         </div>
                                                     </div>

@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/css/user.css}" />
-    <title>Hồ sơ sức khỏe</title>
+    <title>Create Medical Records</title>
 </head>
 <body>
 <section class="sidebar">
@@ -74,7 +74,7 @@
     <div class="dashboard">
         <div class="welcome-staff row">
             <div class="welcome-title col-md-6">
-                <h2>Thêm hồ sơ sức khỏe</h2>
+                <h2>Add Medical Records</h2>
             </div>
         </div>
         <br>
@@ -126,7 +126,7 @@
                                                                             <label for="animalID">Animal ID</label>
                                                                         </div>
                                                                         <div class="col-lg-6" >
-                                                                            <input type="text" id="animalID" name="animal_id" class="form-control form-control" th:field="*{animal.id}" th:value="${animal.id}" />
+                                                                            <input type="text" id="animalID" name="animal_id" class="form-control form-control" th:field="*{animal.id}" th:value="${animal.id}"/>
 
 
                                                                         </div>

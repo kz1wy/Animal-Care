@@ -62,7 +62,7 @@ public class MedicalRecordController {
     @PostMapping(value ="/create")
     public String createUser(@ModelAttribute  MedicalRecord medicalRecord) {
         medicalRecordService.create(medicalRecord);
-        return "redirect:/user";
+        return "redirect:/medical-records";
 
     }
     @GetMapping("/{id}/edit")
