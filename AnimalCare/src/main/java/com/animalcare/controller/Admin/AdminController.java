@@ -32,4 +32,10 @@ public class AdminController {
         model.addAttribute("user", new User());
         return "admin/add-user";
     }
+
+    @PostMapping("/add-user")
+    public String createUser(@ModelAttribute User user) {
+         userService.createUser(user);
+         return "redirect:/admin";
+    }
 }

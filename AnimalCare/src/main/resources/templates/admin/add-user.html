@@ -56,7 +56,7 @@
 			</div>
             <br>
             <div class="show-form m-auto">
-                <form class="add-form m-auto py-5" th:action="@{/admin/users/add}" th:object="${user}" method="POST" >
+                <form class="add-form m-auto py-5" th:action="@{/admin/add-user}" th:object="${user}" method="POST" >
                     <div class="form-group">
                         <label class="control-label" for="add-email">Email:</label>
                         <input type="email" class="form-control" name="email" id="add-email"th:field="*{email}" >

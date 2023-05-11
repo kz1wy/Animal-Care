@@ -30,10 +30,10 @@ public class UserController {
         return userService.getUserById(id);
 
     }
-    @PostMapping("/add-user")
-    public User createUser(@ModelAttribute User user) {
-        return userService.createUser(user);
-    }
+//    @PostMapping("/add-user")
+//    public User createUser(@ModelAttribute User user) {
+//        return userService.createUser(user);
+//    }
 
     @DeleteMapping("/user/{id}")
     public void deleteUser(@PathVariable int id) {
